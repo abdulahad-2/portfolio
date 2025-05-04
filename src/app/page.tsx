@@ -6,6 +6,8 @@ import GooeyNav from "@/blocks/Components/GooeyNav/GooeyNav";
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
 import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
 import Threads from "@/blocks/Backgrounds/Threads/Threads";
+import CircularText from "@/blocks/TextAnimations/CircularText/CircularText";
+import ScrollReveal from "@/blocks/TextAnimations/ScrollReveal/ScrollReveal";
 
 // Define items for GooeyNav
 const items = [
@@ -80,7 +82,7 @@ export default function Home() {
 
       {/* Main content area */}
       <main className="flex-grow flex flex-col items-center">
-        <div style={{ width: '100%', height: '600px', position: 'absolute' }}>
+        <div style={{ width: '100%', height: '600px', position: 'absolute', bottom: '50'}}>
           <Threads
             amplitude={3}
             distance={0}
@@ -88,18 +90,18 @@ export default function Home() {
           />
         </div>
 
-        <div className="w-full flex justify-center items-center my-4 md:my-8 text-center font-bold relative px-4 md:px-0">
+        <div className="w-full flex justify-center items-center my-4 md:mt-15 text-center font-bold relative px-4 md:px-0">
           <BlurText
             text="Lauvigne Lumeda"
             delay={150}
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="lg:text-9xl md:text-7xl sm:text-5xl xs:text-3xl text-center"  
+            className="lg:text-9xl md:text-7xl sm:text-5xl text-center"  
           />
         </div>
 
-        <div className="font-bold text-3xl text-center opacity-0 animate-fadeIn">
+        <div className="font-bold text-center opacity-0 animate-fadeIn">
           <TrueFocus 
             sentence="Web Developer"
             manualMode={true}
@@ -127,6 +129,37 @@ export default function Home() {
             animation-delay: 0.8s;
           }
         `}</style>
+
+        <div className="w-full flex items-center mt-8 mb-4 relative h-[300px]">
+          <CircularText
+            text="SCROLL-DOWN*SCROLL-DOWN*"
+            onHover="slowDown"
+            spinDuration={10}
+            className="absolute left-20 bottom-10"
+          />
+          <Image 
+            src="/logo/lauv-logo.svg"
+            alt="Lauv Logo"
+            width={20}
+            height={20}
+            className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 cursor-pointer absolute left-19 bottom-9"
+          />
+        </div>
+
+        <div className="flex-grow flex flex-col items-center justify-center w-5xl">
+          <ScrollReveal
+            baseOpacity={0}
+            enableBlur={true}
+            baseRotation={5}
+            blurStrength={10}
+          >
+            At PLM, computer science is more than my major—it's my pulse. 
+            This drive led me to co-found Feinpoint and earn a Security Bank scholarship. 
+            I craft digital realities with React, Bootstrap, Flutter, Firebase, and Java, constantly refining my edge with Flutter and Spring Boot. 
+            Design is my visual language (Figma, Canva), while Notion and Github structure my projects.
+             Beyond the screen, I balance the digital with the physical, honing strength through weights and MMA.
+          </ScrollReveal>
+        </div>
       </main>
 
       {/* Footer Section */}
