@@ -8,6 +8,7 @@ import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
 import Threads from "@/blocks/Backgrounds/Threads/Threads";
 import CircularText from "@/blocks/TextAnimations/CircularText/CircularText";
 import ScrollReveal from "@/blocks/TextAnimations/ScrollReveal/ScrollReveal";
+import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 
 // Define items for GooeyNav
 const items = [
@@ -29,10 +30,10 @@ export default function Home() {
       <header className="relative flex w-full items-center justify-between p-10">
         {/* Logo */}
         <Image 
-          src="/logo/lauv-logo.svg"
+          src="/logo/lauv-logo2.svg"
           alt="Lauv Logo"
-          width={40}
-          height={40}
+          width={35}
+          height={35}
           className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 cursor-pointer"
         />
 
@@ -81,7 +82,7 @@ export default function Home() {
 
 
       {/* Main content area */}
-      <main className="flex-grow flex flex-col items-center">
+      <main className="flex-grow flex flex-col items-center h-full relative">
         <div style={{ width: '100%', height: '600px', position: 'absolute', bottom: '50'}}>
           <Threads
             amplitude={3}
@@ -101,9 +102,9 @@ export default function Home() {
           />
         </div>
 
-        <div className="font-bold text-center opacity-0 animate-fadeIn">
+        <div className="font-bold text-center opacity-0 animate-fadeIn mt-3">
           <TrueFocus 
-            sentence="Web Developer"
+            sentence="Developer   Creator   Solopreneur"
             manualMode={true}
             blurAmount={5}
             borderColor="cyan"
@@ -135,23 +136,23 @@ export default function Home() {
             text="SCROLL-DOWN*SCROLL-DOWN*"
             onHover="slowDown"
             spinDuration={10}
-            className="absolute left-20 bottom-10"
+            className="absolute left-45 bottom-10"
           />
           <Image 
             src="/logo/lauv-logo.svg"
             alt="Lauv Logo"
             width={20}
             height={20}
-            className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 cursor-pointer absolute left-19 bottom-9"
+            className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 cursor-pointer absolute left-44 bottom-9"
           />
         </div>
 
-        <div className="flex-grow flex flex-col items-center justify-center w-5xl">
-          <ScrollReveal
+        <div className="flex-grow flex flex-row items-center justify-center w-5xl my-30 space-x-15">
+          <ScrollReveal textClassName="mr-10"
             baseOpacity={0}
-            enableBlur={true}
+            enableBlur={false}
             baseRotation={5}
-            blurStrength={10}
+            blurStrength={50}
           >
             At PLM, computer science is more than my major—it's my pulse. 
             This drive led me to co-found Feinpoint and earn a Security Bank scholarship. 
@@ -159,6 +160,26 @@ export default function Home() {
             Design is my visual language (Figma, Canva), while Notion and Github structure my projects.
              Beyond the screen, I balance the digital with the physical, honing strength through weights and MMA.
           </ScrollReveal>
+
+          <TiltedCard
+            imageSrc="/photos/tiltedcard.svg"
+            altText="Yuyuhiei"
+            captionText="Lauvigne Lumeda"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="bg-gray-900 px-4 py-2 rounded-md opacity-50 font-bold m-5 absolute top-0 left-40">
+                Lauvigne
+              </p>
+            }
+          />
         </div>
       </main>
 
