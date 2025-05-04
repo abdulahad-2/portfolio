@@ -5,6 +5,7 @@ import Image from "next/image";
 import GooeyNav from "@/blocks/Components/GooeyNav/GooeyNav";
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
 import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
+import Threads from "@/blocks/Backgrounds/Threads/Threads";
 
 // Define items for GooeyNav
 const items = [
@@ -76,16 +77,25 @@ export default function Home() {
         </div>
       )}
 
+
       {/* Main content area */}
-      <main className="flex flex-grow flex-col p-8 sm:p-20 text-white max-w-10xl mx-auto">
-        <div className="w-full flex justify-center items-center my-8 text-center font-bold text-">
+      <main className="flex-grow flex flex-col items-center">
+        <div style={{ width: '100%', height: '600px', position: 'absolute' }}>
+          <Threads
+            amplitude={3}
+            distance={0}
+            enableMouseInteraction={false}
+          />
+        </div>
+
+        <div className="w-full flex justify-center items-center my-4 md:my-8 text-center font-bold relative px-4 md:px-0">
           <BlurText
             text="Lauvigne Lumeda"
             delay={150}
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="text-9xl text-center"  
+            className="lg:text-9xl md:text-7xl sm:text-5xl xs:text-3xl text-center"  
           />
         </div>
 
