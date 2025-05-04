@@ -8,8 +8,8 @@ import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
 
 // Define items for GooeyNav
 const items = [
-  { label: "Home", href: "#" },
   { label: "About", href: "#" },
+  { label: "Experience", href: "#" },
   { label: "Contact", href: "#" },
 ];
 
@@ -85,7 +85,7 @@ export default function Home() {
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="text-9xl text-center"
+            className="text-9xl text-center"  
           />
         </div>
 
