@@ -147,39 +147,102 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex-grow flex flex-row items-center justify-center w-5xl my-30 space-x-15">
-          <ScrollReveal textClassName="mr-10"
-            baseOpacity={0}
-            enableBlur={false}
-            baseRotation={5}
-            blurStrength={50}
-          >
-            At PLM, computer science is more than my major—it's my pulse. 
-            This drive led me to co-found Feinpoint and earn a Security Bank scholarship. 
-            I craft digital realities with React, Bootstrap, Flutter, Firebase, and Java, constantly refining my edge with Flutter and Spring Boot. 
-            Design is my visual language (Figma, Canva), while Notion and Github structure my projects.
-             Beyond the screen, I balance the digital with the physical, honing strength through weights and MMA.
-          </ScrollReveal>
+        <div className="flex-grow flex flex-row items-center justify-center w-9xl mt-35 space-x-50">
+          {/* Tech Stack Section Start */}
+          <div className="flex flex-col w-full max-w-lg px-4 md:px-0 mt-10 mb-20 space-y-8"> {/* Increased max-width slightly, increased spacing */}
+
+          {/* DEVELOP Card */}
+          {/* Removed background, added dashed border */}
+          <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-dashed border-gray-800">
+
+            <h3 className="text-purple-400 font-bold text-2xl tracking-wide mb-3"> {/* Increased size, adjusted margin */}
+              DEVELOP
+            </h3>
+            <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5"> {/* Adjusted margins */}
+              Started building websites with javascript and PHP, now I craft them with TypeScript, React, Node.js, Next and a little bit of magic!
+              {/* Updated description to match image */}
+            </p>
+
+            <h4 className="text-gray-300 font-semibold mb-3 text-base"> {/* Adjusted text color/size */}
+              Skillset &amp; tools
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {/* List your development skills here - updated to match image */}
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Next.js</span> {/* Increased padding, added border */}
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Tailwind</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">React</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Javascript</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">CSS</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Node.js</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Python</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Springboot</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Flutterflow</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">MySQL</span>
+              {/* Add more development technologies if needed */}
+            </div>
+          </div>
+
+          {/* DESIGN Card (Styled similarly) */}
+          {/* Removed background, added dashed border */}
+          <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-dashed border-gray-800">
+
+            <h3 className="text-cyan-400 font-bold text-2xl tracking-wide mb-3"> {/* Changed color, Increased size, adjusted margin */}
+              CONTENTS
+            </h3>
+            <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5"> {/* Adjusted margins */}
+              Crafting intuitive and visually appealing interfaces. I focus on user experience and aesthetics.
+              {/* Kept previous description, adjust as needed */}
+            </p>
+            <h4 className="text-gray-300 font-semibold mb-3 text-base"> {/* Adjusted text color/size */}
+              Skillset &amp; Tools
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {/* List your design skills here */}
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Figma</span> {/* Increased padding, added border */}
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Canva</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Capcut</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Adobe Premiere Pro</span>
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Adobe Illustrator</span>
+              {/* Add more design technologies here */}
+            </div>
+          </div>
+
+          {/* Removed Custom CSS for the borders */}
+          {/* <style jsx global>{` ... `}</style> */}
+
+          </div>
+          {/* Tech Stack Section End */}
+
+          <div className="flex flex-col">
+          <BlurText
+            text="What I do"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-7xl font-extrabold"
+          />
 
           <TiltedCard
             imageSrc="/photos/tiltedcard.svg"
             altText="Yuyuhiei"
             captionText="Lauvigne Lumeda"
-            containerHeight="300px"
-            containerWidth="300px"
-            imageHeight="300px"
-            imageWidth="300px"
-            rotateAmplitude={12}
-            scaleOnHover={1.2}
+            containerHeight="600px"
+            containerWidth="500px"
+            imageHeight="600px"
+            imageWidth="500px"
+            rotateAmplitude={10}
+            scaleOnHover={1.1}
             showMobileWarning={false}
-            showTooltip={true}
+            showTooltip={false}
             displayOverlayContent={true}
             overlayContent={
-              <p className="bg-gray-900 px-4 py-2 rounded-md opacity-50 font-bold m-5 absolute top-0 left-40">
+              <p className="bg-transparent px-4 py-2 border-1 border-dashed rounded-lg opacity-50 font-bold m-5 absolute top-5 left-85">
                 Lauvigne
               </p>
             }
           />
+          </div>
         </div>
       </main>
 
