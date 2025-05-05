@@ -150,26 +150,24 @@ export default function Home() {
 
         <div className="flex-grow flex flex-row items-center justify-center w-9xl mt-35 space-x-50">
           {/* Tech Stack Section Start */}
-          <div className="flex flex-col w-full max-w-lg px-4 md:px-0 mt-10 mb-20 space-y-8"> {/* Increased max-width slightly, increased spacing */}
+          <div className="flex flex-col w-full max-w-lg px-4 md:px-0 mt-10 mb-20 space-y-8">
 
           {/* DEVELOP Card */}
-          {/* Removed background, added dashed border */}
-          <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-dashed border-gray-800">
-
-            <h3 className="text-white font-bold text-2xl tracking-wide mb-3"> {/* Increased size, adjusted margin */}
+          {/* REMOVE border-2 border-dashed border-gray-800 */}
+          {/* ADD custom-corner-border */}
+          <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 custom-corner-border">
+            {/* ... content ... */}
+            <h3 className="text-white font-bold text-2xl tracking-wide mb-3">
               DEVELOP
             </h3>
-            <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5"> {/* Adjusted margins */}
+            <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5">
               Started creating mobile applications using Flutter, FlutterFlow, and Firebase and eventually switched to Web Development using NextJS, React, and Tailwind
-              {/* Updated description to match image */}
             </p>
-
-            <h4 className="text-cyan-300 font-semibold mb-3 text-base"> {/* Adjusted text color/size */}
+            <h4 className="text-cyan-300 font-semibold mb-3 text-base">
               Skillset &amp; tools
             </h4>
             <div className="flex flex-wrap gap-2">
-              {/* List your development skills here - updated to match image */}
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Next.js</span> {/* Increased padding, added border */}
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Next.js</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Tailwind</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">React</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Javascript</span>
@@ -181,38 +179,31 @@ export default function Home() {
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Firebase</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Supabase</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">MySQL</span>
-              {/* Add more development technologies if needed */}
             </div>
           </div>
 
-          {/* DESIGN Card (Styled similarly) */}
-          {/* Removed background, added dashed border */}
-          <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-dashed border-gray-800">
-
-            <h3 className="text-white font-bold text-2xl tracking-wide mb-3"> {/* Changed color, Increased size, adjusted margin */}
-              CONTENTS
+          {/* CONTENTS Card */}
+          {/* REMOVE border-2 border-dashed border-gray-800 */}
+          {/* ADD custom-corner-border */}
+          <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 custom-corner-border">
+            {/* ... content ... */}
+            <h3 className="text-white font-bold text-2xl tracking-wide mb-3">
+              CREATE
             </h3>
-            <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5"> {/* Adjusted margins */}
-              Started creating contents as a side hustle and eventually switched to creating contents for creators, achieving an average of 15 million reach in 90 days
-              {/* Kept previous description, adjust as needed */}
+            <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5">
+              My content creation journey evolved from a side hustle to serving other creators, achieving an average reach of 15 million within 90 days.
             </p>
-            <h4 className="text-cyan-300 font-semibold mb-3 text-base"> {/* Adjusted text color/size */}
+            <h4 className="text-cyan-300 font-semibold mb-3 text-base">
               Skillset &amp; Tools
             </h4>
             <div className="flex flex-wrap gap-2">
-              {/* List your design skills here */}
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Figma</span> {/* Increased padding, added border */}
+              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Figma</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Canva</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Capcut</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Adobe Premiere Pro</span>
               <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Adobe Illustrator</span>
-              {/* Add more design technologies here */}
             </div>
           </div>
-
-          {/* Removed Custom CSS for the borders */}
-          {/* <style jsx global>{` ... `}</style> */}
-
           </div>
           {/* Tech Stack Section End */}
 
