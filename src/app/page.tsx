@@ -2,7 +2,7 @@
 
 "use client"
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
@@ -57,9 +57,9 @@ export default function Home() {
   const cursorY = useMotionValue(0);
 
   // Configure spring physics for the dot (follows closely)
-  const dotSpringConfig = { damping: 25, stiffness: 300 };
+  const dotSpringConfig = { damping: 25, stiffness: 200 };
   // Configure spring physics for the outline (trails the dot)
-  const outlineSpringConfig = { damping: 35, stiffness: 200 }; // More damping/less stiffness for trailing
+  const outlineSpringConfig = { damping: 35, stiffness: 400 }; // More damping/less stiffness for trailing
 
   // Create sprung motion values for the inner dot
   const dotX = useSpring(cursorX, dotSpringConfig);
@@ -197,7 +197,7 @@ export default function Home() {
       <main className="flex-grow flex flex-col items-center h-full relative">
         <div style={{ width: '100%', height: '600px', position: 'absolute', bottom: '50'}}>
           <Threads
-            amplitude={3}
+            amplitude={2.5}
             distance={0}
             enableMouseInteraction={false}
           />
@@ -257,7 +257,7 @@ export default function Home() {
             alt="Lauv Logo"
             width={20}
             height={20}
-            className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 cursor-pointer absolute left-44 bottom-9"
+            className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 absolute left-44 bottom-9"
           />
         </div>
 
@@ -353,11 +353,11 @@ export default function Home() {
         </div>
         <ExperienceTimeline />
 
-        <div className="flex w-full items-center justify-center p-4 mt-40">
+        <div className="flex w-full items-center justify-center p-4 mt-40 text-7xl font-extrabold">
           <BlurText
             text=" My Projects"
-            delay={150}
-            animateBy="words"
+            delay={50}
+            animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
             className="text-7xl font-extrabold"
@@ -373,9 +373,29 @@ export default function Home() {
              ))}
            </div>
         {/* Projects Section End */}
-
-
       </main>
+
+       <div className="flex w-full items-center justify-center p-4 mt-40">
+          <BlurText
+            text="Hackathon Entries"
+            delay={50}
+            animateBy="letters"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-7xl font-extrabold"
+          />
+        </div>
+
+        <div className="flex flex-row w-full max-w-7xl mx-auto items-center justify-center p-4">
+          <div className="text-3xl font-bold italic">
+            <p>
+            Besides being a developer and content creator, I am big on joining competitions, like hackathons. It is a great way to work on solving actual problems and meet interesting people.
+            </p>     
+          </div>
+          <div>
+
+          </div>
+        </div>
 
       {/* Footer Section */}
       <footer className="flex w-full items-center justify-center p-4 border-t border-white/[.15] text-white/50 text-sm font-light">

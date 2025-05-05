@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react'; // Import useEffect and useRef
 import Lenis from '@studio-freight/lenis'; // Import Lenis
 
-import type { Metadata } from "next"; // Keep existing imports
 import { Geist, Geist_Mono } from "next/font/google"; // Keep existing imports
 import "./globals.css"; // Keep existing imports
 import { gilroy } from "@/fonts/fonts"; // Keep existing imports
@@ -53,10 +52,7 @@ export default function RootLayout({
       lenis.current = new Lenis({
         duration: 1.2, // Adjust the duration for scroll speed (seconds)
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function (default lenis easing)
-        direction: 'vertical', // Set scrolling direction
-        gestureDirection: 'vertical', // Set gesture direction for touchpads/touch screens
         smoothWheel: true, // Enable smooth scrolling for mouse wheel
-        smoothTouch: false, // Optional: Disable smooth touch scrolling (can be less intuitive on mobile)
         // wheelMultiplier: 1, // Adjust scroll speed sensitivity
         // touchMultiplier: 1,
         // infinite: false, // Set to true for infinite looping scrolling
