@@ -10,6 +10,7 @@ import CircularText from "@/blocks/TextAnimations/CircularText/CircularText";
 import ScrollReveal from "@/blocks/TextAnimations/ScrollReveal/ScrollReveal";
 import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 import ExperienceTimeline from '@/components/ExperienceTimeline';
+import SkillTag from '@/components/SkillTag';
 
 // Define items for GooeyNav
 const items = [
@@ -21,6 +22,15 @@ const items = [
 const handleAnimationComplete = () => {
   console.log('Animation completed!');
 };
+
+const devSkills = [
+  'Next.js', 'Tailwind', 'React', 'Javascript', 'CSS', 'Node.js',
+  'Python', 'Springboot', 'Flutterflow', 'Firebase', 'Supabase', 'MySQL'
+];
+
+const contentSkills = [
+  'Figma', 'Canva', 'Capcut', 'Adobe Premiere Pro', 'Adobe Illustrator'
+];
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -150,13 +160,11 @@ export default function Home() {
 
         <div className="flex-grow flex flex-row items-center justify-center w-9xl mt-35 space-x-50">
           {/* Tech Stack Section Start */}
-          <div className="flex flex-col w-full max-w-lg px-4 md:px-0 mt-10 mb-20 space-y-8">
-
+      <div className="flex flex-col w-full max-w-lg px-4 md:px-0 mt-10 mb-20 space-y-8">
           {/* DEVELOP Card */}
-          {/* REMOVE border-2 border-dashed border-gray-800 */}
-          {/* ADD custom-corner-border */}
+          {/* custom-corner-border class is kept from previous step */}
+          {/* hover:scale-105 on the card wrapper is kept */}
           <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 custom-corner-border">
-            {/* ... content ... */}
             <h3 className="text-white font-bold text-2xl tracking-wide mb-3">
               DEVELOP
             </h3>
@@ -167,41 +175,29 @@ export default function Home() {
               Skillset &amp; tools
             </h4>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Next.js</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Tailwind</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">React</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Javascript</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">CSS</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Node.js</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Python</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Springboot</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Flutterflow</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Firebase</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Supabase</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">MySQL</span>
+              {devSkills.map(skill => (
+                <SkillTag key={skill} skillName={skill} />
+              ))}
             </div>
           </div>
 
           {/* CONTENTS Card */}
-          {/* REMOVE border-2 border-dashed border-gray-800 */}
-          {/* ADD custom-corner-border */}
+          {/* custom-corner-border class is kept from previous step */}
+          {/* hover:scale-105 on the card wrapper is kept */}
           <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 custom-corner-border">
-            {/* ... content ... */}
             <h3 className="text-white font-bold text-2xl tracking-wide mb-3">
-              CREATE
+              CREATE {/* Updated title based on your code */}
             </h3>
             <p className="text-gray-400 text-sm mt-2 leading-relaxed mb-5">
-              My content creation journey evolved from a side hustle to serving other creators, achieving an average reach of 15 million within 90 days.
+              My content creation journey evolved from a side hustle to serving other creators, achieving an average reach of 15 million within 90 days. {/* Updated description */}
             </p>
             <h4 className="text-cyan-300 font-semibold mb-3 text-base">
               Skillset &amp; Tools
             </h4>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Figma</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Canva</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Capcut</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Adobe Premiere Pro</span>
-              <span className="bg-transparent text-gray-300 py-1 px-4 rounded-full text-sm font-medium border border-gray-600">Adobe Illustrator</span>
+              {contentSkills.map(skill => (
+                <SkillTag key={skill} skillName={skill} />
+              ))}
             </div>
           </div>
           </div>
