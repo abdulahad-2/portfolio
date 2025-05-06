@@ -103,22 +103,22 @@ const ExperienceTimeline: React.FC = () => {
       <div className="relative space-y-24">
         {experiences.map((exp, index) => (
           // Changed grid to 2 columns, removed the 'auto' middle column
-          <div key={exp.id} className="relative grid grid-cols-1 md:grid-cols-2 items-start gap-x-20">
+          <div key={exp.id} className="relative grid grid-cols-1 md:grid-cols-2 items-start gap-x-20 bg-black rounded-2xl p-6 shadow-lg md:bg-transparent">
             {/* Side 1: Title, Company, Year, Logo - Conditional Alignment */}
             <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end md:text-right' : 'md:items-start md:text-left'} ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
-              <h3 className="text-2xl font-bold text-gray-100">{exp.title}</h3>
+              <h3 className="md:text-2xl text-xl font-bold text-gray-100">{exp.title}</h3>
 
               <p className="text-lg text-cyan-400 mb-1">{exp.company}</p>
               {/* Year */}
               <span
-                className="text-xl font-regular text-gray-400 mb-2"
+                className="md:text-xl text-md font-regular text-gray-400 mb-2"
                 style={{ letterSpacing: '0.4em' }}
               >
                 {exp.year}
               </span>
 
               {/* Logo */}
-              <div className="w-10 h-10 relative flex items-center justify-center"> {/* Added flex centering for logos */}
+              <div className="w-10 h-10 relative flex items-center justify-center md:my-0 my-5"> {/* Added flex centering for logos */}
                 <Image
                   src={exp.logo}
                   alt={`${exp.company} logo`}
@@ -130,7 +130,7 @@ const ExperienceTimeline: React.FC = () => {
             </div>
 
             {/* Side 2: Description - Conditional Alignment */}
-            <div className={`text-gray-300 text-lg ${index % 2 !== 0 ? 'md:text-right' : 'text-left'} ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+            <div className={`text-gray-300 md:text-lg text:md ${index % 2 !== 0 ? 'md:text-right' : 'text-left'} ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
               <p>{exp.description}</p>
             </div>
           </div>

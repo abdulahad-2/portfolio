@@ -72,12 +72,12 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) 
     // Use flex-col to stack content vertically, justify-between to space text and image
     // Removed aspect-square to allow height to be determined by content
     <motion.div
-      className="relative flex flex-col justify-between py-6 px-15 border border-white border-opacity-20 bg-transparent overflow-hidden h-full"
+      className="relative flex flex-col justify-between py-6 px-15 md:m-0 m-5 border border-white border-opacity-20 bg-transparent overflow-hidden h-full"
       // Optional: Add Framer Motion initial/animate/whileHover props here (for the whole card)
       // For example: initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
     >
       {/* Large Project Number - Absolutely Positioned */}
-      <div className={`absolute text-6xl p-6 font-bold text-white text-opacity-10 ${numberPositionClasses}`}>
+      <div className={`absolute md:text-6xl text-3xl p-6 font-bold text-white text-opacity-10 ${numberPositionClasses}`}>
         {project.number}
       </div>
 
@@ -88,8 +88,8 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) 
         <div className={`flex flex-col ${contentAlignmentClasses} ${textOrderClass} z-10 p-6`}>
             {/* Title and Category */}
             <div>
-              <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-              <p className="text-sm text-gray-400">{project.category}</p>
+              <h3 className="md:text-xl text-md font-semibold text-white">{project.title}</h3>
+              <p className="md:text-sm text-xs text-gray-400">{project.category}</p>
             </div>
             {/* Description */}
             <div className="mt-2">
@@ -101,7 +101,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) 
         {/* Added flex-grow to help manage space within the flex container */}
         {/* Added initial opacity, hover effects, transition, and onClick handler */}
         <motion.div
-            className={`relative w-full flex-grow rounded-xl overflow-hidden z-10 cursor-pointer ${imageOrderClass}`} // Added cursor-pointer
+            className={`relative w-full flex-grow rounded-xl overflow-hidden z-10 ${imageOrderClass}`} // Added cursor-pointer
             initial={{ opacity: 0.7 }} // Changed initial opacity to 70%
             whileHover={{ opacity: 1, scale: 1.05 }} // Hover effects: opacity 100%, scale 10% (1.05 is 5%)
             transition={{ duration: 0.3 }} // Smooth transition for hover effects
