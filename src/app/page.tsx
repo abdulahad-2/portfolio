@@ -2,9 +2,8 @@
 
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring } from "framer-motion";
 
 // Import your data
 import { projects } from '@/data/projects'; // Adjust the path if your file is in a different location
@@ -49,95 +48,9 @@ const contentSkills = [
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // --- Custom Cursor Implementation ---
-  // Use MotionValues to track the raw mouse position
-  // Initialize to 0 on both server and client to prevent hydration errors
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-
-  // Configure spring physics for the dot (follows closely)
-  const dotSpringConfig = { damping: 25, stiffness: 200 };
-  // Configure spring physics for the outline (trails the dot)
-  const outlineSpringConfig = { damping: 35, stiffness: 400 }; // More damping/less stiffness for trailing
-
-  // Create sprung motion values for the inner dot
-  const dotX = useSpring(cursorX, dotSpringConfig);
-  const dotY = useSpring(cursorY, dotSpringConfig);
-
-  // Create sprung motion values for the outer outline, based on the dot's sprung values
-  const outlineX = useSpring(dotX, outlineSpringConfig);
-  const outlineY = useSpring(dotY, outlineSpringConfig);
-
-  // Effect to update mouse position on mousemove AND set initial position after mount
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-
-    // Set initial cursor position to the center of the window after the component mounts
-    // This runs only on the client after hydration
-    cursorX.set(window.innerWidth / 2);
-    cursorY.set(window.innerHeight / 2);
-
-
-    // Add event listener for subsequent mouse movements
-    window.addEventListener('mousemove', moveCursor);
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener('mousemove', moveCursor);
-    };
-  }, [cursorX, cursorY]); // Dependencies: update effect if motion values change (they won't here, but good practice)
-  // --- End Custom Cursor Implementation ---
-
-
   return (
     // The cursor: 'none' style is now applied globally in layout.tsx
     <div className="flex flex-col min-h-screen bg-[#101112] font-gilroy">
-      {/* --- Custom Cursor Elements --- */}
-      {/* Inner Glowing Dot */}
-      <motion.div
-        style={{
-          x: dotX, // Bind x position to the dot's sprung motion value
-          y: dotY, // Bind y position to the dot's sprung motion value
-          pointerEvents: 'none', // Ensure the cursor doesn't block clicks on elements below it
-          left: 0, // Position relative to the viewport
-          top: 0,
-          position: 'fixed', // Stay in fixed position relative to the viewport
-          zIndex: 9999, // Ensure it's always on top
-          transform: 'translate(-50%, -50%)', // Center the div exactly on the cursor coordinates
-          width: '8px', // Size of the inner dot
-          height: '8px',
-          borderRadius: '50%', // Make it round
-          backgroundColor: '#06b6d4', // Cyan color (Tailwind cyan-500 equivalent)
-          boxShadow: '0 0 10px 4px rgba(6, 182, 212, 0.7)', // Glowing effect
-        }}
-      />
-
-      {/* Outer Trailing Circle */}
-      <motion.div
-        style={{
-          x: outlineX, // Bind x position to the outline's sprung motion value
-          y: outlineY, // Bind y position to the outline's sprung motion value
-          pointerEvents: 'none', // Ensure the cursor doesn't block clicks
-          left: 0, // Position relative to the viewport
-          top: 0,
-          position: 'fixed', // Stay in fixed position
-          zIndex: 9998, // Z-index slightly lower than the dot
-          transform: 'translate(-50%, -50%)', // Center the div
-          width: '30px', // Size of the outer circle
-          height: '30px',
-          borderRadius: '50%', // Make it round
-          border: '2px solid #0891b2', // Border color (Tailwind cyan-600 equivalent)
-          // Optional: opacity for transparency
-          // opacity: 0.5,
-        }}
-      />
-      {/* --- End Custom Cursor Elements --- */}
-
-
       {/* Header Section */}
       <header className="sticky top-0 z-50 flex w-full items-center justify-between p-6 md:p-8 bg-[#101112]/90 backdrop-blur-sm">
         {/* Logo */}
@@ -396,6 +309,7 @@ export default function Home() {
 
           </div>
         </div>
+        
 
       {/* Footer Section */}
       <footer className="flex w-full items-center justify-center p-4 border-t border-white/[.15] text-white/50 text-sm font-light">
