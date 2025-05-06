@@ -30,30 +30,36 @@ const HackathonEntry: React.FC<HackathonEntryProps> = ({
   trophyType,
 }) => {
   // Get the correct image path based on trophyType from the mapping
-  // Fallback to a default image or null if the type is not found
   const trophyImagePath = trophyImagePaths[trophyType]; // Removed fallback for clarity, add back if needed
 
   return (
-    <div className="flex flex-col md:flex-row items-start w-full border-b border-white/[.15] py-10 last:border-b-0">
+    // Main container: flex-col on mobile, flex-row on medium screens and up
+    // Added responsive padding: smaller on mobile, larger on medium+
+    <div className="flex flex-col md:flex-row items-start w-full border-b border-white/[.15] py-6 md:py-10 last:border-b-0">
       {/* Entry Number - Displays the sequential number for the hackathon entry */}
-      <div className="text-white text-6xl font-extrabold mr-8 mb-4 md:mb-0 flex-shrink-0">
+      {/* Adjusted text size for different breakpoints */}
+      {/* Adjusted margin for different breakpoints */}
+      <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold mr-0 md:mr-8 mb-4 md:mb-0 flex-shrink-0 w-full md:w-auto text-center md:text-left">
         {entryNumber}
       </div>
 
       {/* Content Area - Contains the project image and the text details */}
+      {/* Flex direction changes based on screen size */}
       <div className="flex flex-col md:flex-row flex-1">
         {/* Image Placeholder for the Project Image - Displays the project image or a placeholder */}
+        {/* Adjusted width for different breakpoints */}
+        {/* Adjusted margin for different breakpoints */}
         <div className="w-full md:w-1/3 aspect-video flex items-center justify-center rounded-lg overflow-hidden mb-6 md:mb-0 md:mr-8 flex-shrink-0">
           {imageSrc ? (
             // Render the project image using object-contain to prevent cropping
             <img
               src={imageSrc}
               alt={`Project for ${title}`}
-              className="object-contain h-full rounded-sm" // Changed from object-cover to object-contain
+              className="object-contain h-full rounded-sm" // w-full h-full already makes it responsive within its container
             />
           ) : (
             // Display placeholder text if no image source is provided
-            <span className="text-gray-500">Project Image</span>
+            <span className="text-gray-500 text-sm sm:text-base">Project Image</span>
           )}
         </div>
 
@@ -66,7 +72,7 @@ const HackathonEntry: React.FC<HackathonEntryProps> = ({
                 <img
                 src={trophyImagePath} // Use the path from the mapping
                 alt={`${award} Trophy`}
-                className="w-5 h-5 mr-1 object-contain" // Adjust size and styling as needed
+                className="w-4 h-4 sm:w-5 sm:h-5 mr-1 object-contain" // Adjusted trophy size responsively
               />
             )}
             {/* Award Text */}
@@ -74,10 +80,12 @@ const HackathonEntry: React.FC<HackathonEntryProps> = ({
           </div>
 
           {/* Title - Displays the title of the hackathon entry */}
-          <h3 className="text-white text-3xl md:text-4xl font-bold mb-4">{title}</h3>
+          {/* Adjusted text size for different breakpoints */}
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4">{title}</h3>
 
           {/* Description - Displays the description of the hackathon entry */}
-          <p className="text-white/70 text-base leading-relaxed">
+          {/* Adjusted text size for different breakpoints */}
+          <p className="text-sm sm:text-base text-white/70 leading-relaxed">
             {description}
           </p>
         </div>

@@ -147,6 +147,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${gilroy.variable} antialiased font-gilroy`}
         style={{ cursor: 'none' }} // Apply cursor: none globally to the body
         >
+        {/* Custom Cursor Dot */}
         <motion.div
             style={{
             x: dotX, // Bind x position to the dot's sprung motion value
@@ -164,6 +165,7 @@ export default function RootLayout({
             boxShadow: '0 0 10px 4px rgba(6, 182, 212, 0.7)', // Glowing effect
             }}
         />
+        {/* Custom Cursor Outline */}
         <motion.div
             style={{
             x: outlineX, // Bind x position to the outline's sprung motion value
@@ -182,22 +184,27 @@ export default function RootLayout({
             opacity: 0.5,
             }}
         />
-        {/* Header Section (Moved from page.tsx) */}
-        <header className="sticky top-0 z-50 flex w-full items-center justify-between p-6 md:p-8 bg-[#101112]/90 backdrop-blur-sm">
+        {/* Header Section */}
+        {/* Adjusted padding for different screen sizes */}
+        <header className="sticky top-0 z-50 flex w-full items-center justify-between px-4 py-4 md:px-8 md:py-6 bg-[#101112]/90 backdrop-blur-sm">
           {/* Logo */}
           {/* Using Link for Logo if it navigates to home */}
-           <Link href="/" passHref>
+          {/* Adjusted margin for different screen sizes */}
+            <Link href="/" passHref>
              <Image
-               src="/logo/lauv-logo2.svg"
-               alt="Lauv Logo"
-               width={35}
-               height={35}
-               className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125"
+                src="/logo/lauv-logo2.svg"
+                alt="Lauv Logo"
+                width={35} // Base size for logo
+                height={35} // Base size for logo
+                // Added responsive sizing for the logo image itself if needed (optional, depends on design)
+                // className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 m-4 md:m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125"
+                className="m-4 md:m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125" // Adjusted margin
              />
-           </Link>
+            </Link>
 
 
           {/* Desktop Navigation - hidden on small screens */}
+          {/* Container with fixed dimensions - GooeyNav should handle internal responsiveness */}
           <div className="hidden md:block font-medium" style={{ height: '70px', width: '400px', position: 'relative' }}>
             <GooeyNav
               items={items} // The items array contains { label, href }
@@ -216,7 +223,10 @@ export default function RootLayout({
           <button
             className="md:hidden text-white p-2 focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu" // Added accessibility label
           >
+            {/* Hamburger icon lines */}
+            {/* Added transition for animation if you want to animate the icon */}
             <div className="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ease-in-out"></div>
             <div className="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ease-in-out"></div>
             <div className="w-6 h-0.5 bg-white transition-all duration-300 ease-in-out"></div>
@@ -224,15 +234,18 @@ export default function RootLayout({
         </header>
 
         {/* Mobile menu - only visible when mobileMenuOpen is true */}
+        {/* Positioned absolutely below the header, covers full width on mobile */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#1a1b1c] absolute top-[90px] right-0 left-0 z-50 p-5">
+          // Added responsive padding to the mobile menu container
+          <div className="md:hidden bg-[#1a1b1c] absolute top-[72px] sm:top-[80px] md:top-[96px] right-0 left-0 z-40 p-4 sm:p-5"> {/* Adjusted top position and padding */}
             <nav className="flex flex-col space-y-4">
               {items.map((item, index) => (
-                // *** REPLACED <a> with <Link> here ***
+                // Using <Link> for navigation items
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-white hover:text-gray-300 py-2 px-4 font-medium"
+                  // Added responsive padding to the links
+                  className="text-white hover:text-gray-300 py-2 px-4 font-medium text-base sm:text-lg" // Adjusted text size
                   onClick={() => setMobileMenuOpen(false)} // Keep the click handler to close the menu
                 >
                   {item.label}

@@ -55,8 +55,7 @@ export default function Hackathons() {
     <>
       {/* Main content area for Hackathons */}
       <main className="flex-grow flex flex-col items-center h-full relative pt-20">
-        {/* Optional: Add background elements like Threads if desired */}
-
+      { /* Make this hidden on mobile */ }
         <div style={{ width: '100%', height: '600px', position: 'absolute', top: '0', zIndex: -1, opacity: 0.5 }}>
           <Threads
             amplitude={2.5}
@@ -73,23 +72,39 @@ export default function Hackathons() {
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="text-5xl md:text-7xl font-extrabold text-center"
+            className="text-3xl md:text-7xl font-extrabold text-center"
           />
         </div>
 
         <RollingGallery autoplay={true} pauseOnHover={false} />
 
-        <div className="flex flex-col w-full max-w-5xl mx-auto p-4 my-10 md:my-20">
-          <FallingText
-            text={` Besides being a developer and content creator, I am big on joining competitions, like hackathons. It is a great way to work on solving actual problems and meet interesting people. Here are some of the events I've participated in:`}
-            highlightWords={["hackathons", "competitions", "problems", "interesting", "events"]}
-            trigger="hover"
-            backgroundColor="transparent"
-            wireframes={false}
-            gravity={0.56}
-            fontSize="2rem"
-            mouseConstraintStiffness={0.9}
-          />
+        <div className="flex flex-col w-full max-w-5xl mx-auto p-15 md:p-4 my-10 md:my-20">
+          <div className="hidden md:block">
+            <FallingText
+              text={` Besides being a developer and content creator, I am big on joining competitions, like hackathons. It is a great way to work on solving actual problems and meet interesting people. Here are some of the events I've participated in:`}
+              highlightWords={["hackathons", "competitions", "problems", "interesting", "events"]}
+              trigger="hover"
+              backgroundColor="transparent"
+              wireframes={false}
+              gravity={0.56}
+              fontSize="2rem"
+              mouseConstraintStiffness={0.9}
+            />
+          </div>
+
+          <div className="md:hidden mb-25">
+            <FallingText
+              text={` Besides being a developer and content creator, I am big on joining competitions, like hackathons. It is a great way to work on solving actual problems and meet interesting people. Here are some of the events I've participated in:`}
+              highlightWords={["hackathons", "competitions", "problems", "interesting", "events"]}
+              trigger="hover"
+              backgroundColor="transparent"
+              wireframes={false}
+              gravity={0.56}
+              fontSize="1rem"
+              mouseConstraintStiffness={0.9}
+            />
+          </div>
+          
 
           {/* Render Hackathon Entries */}
           <div className="md:mt-50 mt-20">
