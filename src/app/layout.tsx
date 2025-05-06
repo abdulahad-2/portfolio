@@ -18,7 +18,7 @@ import { gilroy } from "@/fonts/fonts";
 // Define items for GooeyNav (moved from page.tsx)
 const items = [
   { label: "Home", href: "/" },
-  { label: "Hackathons", href: "/Hackathons" },
+  { label: "Awards", href: "/Hackathons" },
   { label: "Contact", href: "#" }, // Adjust as needed
 ];
 
@@ -198,7 +198,7 @@ export default function RootLayout({
 
 
           {/* Desktop Navigation - hidden on small screens */}
-          <div className="hidden md:block font-medium" style={{ height: '70px', width: '450px', position: 'relative' }}>
+          <div className="hidden md:block font-medium" style={{ height: '70px', width: '400px', position: 'relative' }}>
             <GooeyNav
               items={items} // The items array contains { label, href }
               particleCount={15}
