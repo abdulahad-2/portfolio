@@ -12,12 +12,12 @@ import {
 } from "framer-motion";
 
 const IMGS: string[] = [
-    "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1495103033382-fe343886b671?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1506781961370-37a89d6b3095?q=80&w=3264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1599576838688-8a6c11263108?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "/hackathons/ffdg.JPG",
+    "/hackathons/ideathon.JPG",
+    "/hackathons/inno2024.JPG",
+    "/hackathons/innolympics.JPG",
+    "/hackathons/kmc.JPG",
+    "/hackathons/springlabs.JPG",
 ];
 
 interface RollingGalleryProps {
@@ -121,7 +121,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
     };
 
     return (
-        <div className="relative h-[500px] w-full overflow-hidden">
+        <div className="relative h-[300px] w-full overflow-hidden">
             <div
                 className="absolute top-0 left-0 h-full w-[48px] z-10"
                 style={{
@@ -160,7 +160,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
                             <div
                                 key={i}
                                 // Added p-1 and md:p-1 classes for a little padding
-                                className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden] p-10 md:p-10"
+                                className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden] p-5 md:p-5"
                                 style={{
                                     width: `${faceWidth}px`,
                                     transform: itemTransform,

@@ -45,19 +45,11 @@ export default function Hackathons() {
 
         <RollingGallery autoplay={true} pauseOnHover={false} />
 
-        <div className="flex flex-col md:flex-row w-full max-w-5xl mx-auto items-center justify-center p-4 mt-5 md:mt-10 space-y-5 md:space-y-0 md:space-x-10"> {/* Adjusted layout and spacing */}
-          <div className="text-lg md:text-xl font-medium text-gray-300 italic text-center md:text-left max-w-2xl"> {/* Adjusted text size and alignment */}
+        <div className="flex flex-row md:flex-row w-full max-w-5xl mx-auto items-center justify-center p-4 mt-5 md:mt-10 space-y-5 md:space-y-0 md:space-x-10"> {/* Adjusted layout and spacing */}
             <p>
             Besides being a developer and content creator, I am big on joining competitions, like hackathons. It is a great way to work on solving actual problems and meet interesting people. Here are some of the events I've participated in:
             </p>
-          </div>
-          {/* Placeholder for actual hackathon content/cards */}
-          <div className="w-full md:w-auto mt-5 md:mt-0">
-             {/* You can add components here to display hackathon details, e.g., <HackathonCard /> */}
-             <p className="text-center text-gray-500">(Hackathon details will go here)</p>
-          </div>
         </div>
-
         {/* Add more sections specific to the Hackathons page as needed */}
 
       </main>
