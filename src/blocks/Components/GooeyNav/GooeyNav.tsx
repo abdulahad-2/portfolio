@@ -3,6 +3,7 @@
 */
 
 import React, { useRef, useEffect, useState } from "react";
+import Link from 'next/link';
 
 interface GooeyNavItem {
 	label: string;
@@ -321,18 +322,18 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
 						{items.map((item, index) => (
 							<li
 								key={index}
-								className={`py-[0.6em] px-[1em] rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${
+								className={`py-[0.6em] px-[1em] rounded-full relative transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${
 									activeIndex === index ? "active" : ""
 								}`}
 								onClick={(e) => handleClick(e, index)}
 							>
-								<a
+								<Link
 									href={item.href}
 									onKeyDown={(e) => handleKeyDown(e, index)}
 									className="outline-none"
 								>
 									{item.label}
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>

@@ -2,14 +2,14 @@
 
 "use client"
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react"; // Removed useState
+import Image from "next/image"; // Keep Image for CircularText section
 
 // Import your data
 import { projects } from '@/data/projects'; // Adjust the path if your file is in a different location
 
 // Import your components and blocks
-import GooeyNav from "@/blocks/Components/GooeyNav/GooeyNav";
+// Removed GooeyNav import
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
 import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
 import Threads from "@/blocks/Backgrounds/Threads/Threads";
@@ -22,12 +22,7 @@ import SkillTag from '@/components/SkillTag'; // Assuming SkillTag is in compone
 import ProjectCard from '@/components/ProjectCard'; // Import the new ProjectCard component
 
 
-// Define items for GooeyNav
-const items = [
-  { label: "About", href: "#" },
-  { label: "Experience", href: "#" },
-  { label: "Contact", href: "#" },
-];
+// Removed items constant
 
 const handleAnimationComplete = () => {
   console.log('Animation completed!');
@@ -47,67 +42,14 @@ const contentSkills = [
 
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Removed mobileMenuOpen state
   return (
     // The cursor: 'none' style is now applied globally in layout.tsx
-    <div className="flex flex-col min-h-screen bg-[#101112] font-gilroy">
-      {/* Header Section */}
-      <header className="sticky top-0 z-50 flex w-full items-center justify-between p-6 md:p-8 bg-[#101112]/90 backdrop-blur-sm">
-        {/* Logo */}
-        <Image
-          src="/logo/lauv-logo2.svg"
-          alt="Lauv Logo"
-          width={35}
-          height={35}
-          className="m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125 cursor-pointer"
-        />
-
-        {/* Desktop Navigation - hidden on small screens */}
-        <div className="hidden md:block font-medium" style={{ height: '70px', width: '450px', position: 'relative' }}>
-          <GooeyNav
-            items={items}
-            particleCount={15}
-            particleDistances={[90, 10]}
-            particleR={100}
-            initialActiveIndex={0}
-            animationTime={600}
-            timeVariance={300}
-            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-          />
-        </div>
-
-        {/* Hamburger button - visible only on small screens */}
-        <button
-          className="md:hidden text-white p-2 focus:outline-none"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          <div className="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ease-in-out"></div>
-          <div className="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ease-in-out"></div>
-          <div className="w-6 h-0.5 bg-white transition-all duration-300 ease-in-out"></div>
-        </button>
-      </header>
-
-      {/* Mobile menu - only visible when mobileMenuOpen is true */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#1a1b1c] absolute top-[90px] right-0 left-0 z-50 p-5">
-          <nav className="flex flex-col space-y-4">
-            {items.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="text-white hover:text-gray-300 py-2 px-4 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
-
-
+    // Removed outer div as layout.tsx now handles the main structure
+    // <div className="flex flex-col min-h-screen bg-[#101112] font-gilroy"> // Removed this line
+    <> {/* Added React Fragment wrapper */}
       {/* Main content area */}
-      <main className="flex-grow flex flex-col items-center h-full relative">
+      <main className="flex-grow flex flex-col items-center h-full relative pt-20"> {/* Added padding top to account for fixed header */}
         <div style={{ width: '100%', height: '600px', position: 'absolute', bottom: '50'}}>
           <Threads
             amplitude={2.5}
@@ -288,33 +230,12 @@ export default function Home() {
         {/* Projects Section End */}
       </main>
 
-       <div className="flex w-full items-center justify-center p-4 mt-40">
-          <BlurText
-            text="Hackathon Entries"
-            delay={50}
-            animateBy="letters"
-            direction="top"
-            onAnimationComplete={handleAnimationComplete}
-            className="text-7xl font-extrabold"
-          />
-        </div>
 
-        <div className="flex flex-row w-full max-w-7xl mx-auto items-center justify-center p-4">
-          <div className="text-3xl font-bold italic">
-            <p>
-            Besides being a developer and content creator, I am big on joining competitions, like hackathons. It is a great way to work on solving actual problems and meet interesting people.
-            </p>     
-          </div>
-          <div>
-
-          </div>
-        </div>
-        
-
-      {/* Footer Section */}
-      <footer className="flex w-full items-center justify-center p-4 border-t border-white/[.15] text-white/50 text-sm font-light">
-        <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+      {/* Footer Section - Consider moving this to layout.tsx as well for consistency */}
+      <footer className="flex w-full items-center justify-center p-4 border-t border-white/[.15] text-white/50 text-sm font-light mt-20"> {/* Added margin top */}
+        <p>&copy; {new Date().getFullYear()} Lauvigne Lumeda. All rights reserved.</p> {/* Updated name */}
       </footer>
-    </div>
+    </> // Closed React Fragment wrapper
+    // </div> // Removed this closing tag
   );
 }
