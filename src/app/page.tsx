@@ -20,7 +20,7 @@ import ProjectCard from '@/components/ProjectCard'; // Import the new ProjectCar
 
 // data/projects.ts
 // Define your projects array (add your actual project data here)
-export const projects = [
+const projects = [
   {
     id: 1,
     number: '01',
