@@ -13,7 +13,7 @@ import {
 
 const IMGS: string[] = [
     "/hackathons/ffdg.JPG",
-    "/hackathons/ideathon.JPG",
+    "/hackathons/ideathon.jpg",
     "/hackathons/inno2024.JPG",
     "/hackathons/innolympics.JPG",
     "/hackathons/kmc.JPG",

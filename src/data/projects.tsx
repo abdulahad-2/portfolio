@@ -7,7 +7,7 @@ export const projects = [
       title: 'Haliya: The AI Fortune Teller',
       category: 'Web Development',
       description: 'Web Developer',
-      imageSrc: '/projects/project_1.svg', // Replace with actual image paths
+      imageSrc: '/projects/project_1.png', 
       link: 'https://github.com/Yuyuhiei/Haliya-The-AI-Fortune-Teller',
     },
     {
@@ -16,7 +16,7 @@ export const projects = [
       title: 'GDSC PLM Website',
       category: 'Web Development',
       description: 'Web Developer',
-      imageSrc: '/projects/project_2.svg',
+      imageSrc: '/projects/project_2.png',
       link: 'https://www.gdsc-plm.org/',
     },
     {
@@ -25,7 +25,7 @@ export const projects = [
       title: 'GrievDesk',
       category: 'Web Development',
       description: 'Full Stack Developer',
-      imageSrc: '/projects/project_3.svg',
+      imageSrc: '/projects/project_3.png',
       link: 'https://plmce-grievdesk.web.app/',
     },
     {
@@ -34,7 +34,7 @@ export const projects = [
       title: 'Conso Programming Language and Compiler',
       category: 'Full Stack Development',
       description: 'Full Stack Developer',
-      imageSrc: '/projects/project_4.svg',
+      imageSrc: '/projects/project_4.png',
       link: 'https://github.com/Yuyuhiei/conso-web-ide',
     },
     // Add more projects following this structure
@@ -44,7 +44,7 @@ export const projects = [
       title: 'AceFrame',
       category: 'Web Development',
       description: 'Web Developer',
-      imageSrc: '/projects/project_5.svg',
+      imageSrc: '/projects/project_5.png',
       link: 'https://aceframe.web.app/', 
     },
     {
@@ -53,7 +53,7 @@ export const projects = [
       title: 'PLM Enrolment System',
       category: 'Web Application',
       description: 'Database Administrator and Developer',
-      imageSrc: '/projects/project_6.svg',
+      imageSrc: '/projects/project_6.png',
       link: 'https://github.com/Yuyuhiei/PLM-Regulars-Enrolment-System',
     },
   ];
