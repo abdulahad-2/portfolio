@@ -1,3 +1,5 @@
+// src/app/Contact.tsx
+
 'use client'; // This page uses client-side interactivity (form, potential animations)
 
 import React from 'react';
@@ -10,21 +12,43 @@ const socialLinks = [
     { platform: "GitHub", href: "https://github.com/Yuyuhiei", iconPath: "/icons/github_icon.svg" }, // <-- Replace YOUR_GITHUB_LINK and icon path
     { platform: "LinkedIn", href: "https://www.linkedin.com/in/lauvigne-lumeda/", iconPath: "/icons/linkedin_icon.svg" }, // <-- Replace YOUR_LINKEDIN_LINK and icon path
     { platform: "Gmail", href: "mailto:lumedalauvigne@gmail.com", iconPath: "/icons/gmail_icon.svg" }, // <-- Replace YOUR_EMAIL_ADDRESS and icon path
-  ];
+];
 
 // Define contact information
 const contactInfo = {
-    email: "lumedalauvigne@gmail.com", 
+    email: "lumedalauvigne@gmail.com",
 };
 
 
 export default function Contact() {
-  // Basic form submission handler (client-side only, won't send email)
+  // Updated form submission handler to open mail client with mailto link
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // You would typically handle form submission here, e.g., send data to an API route
-    console.log('Form submitted!');
-    // Add logic to clear form, show success message, etc.
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    // Get form values
+    const name = formData.get('name')?.toString() || '';
+    const email = formData.get('email')?.toString() || '';
+    const subject = formData.get('subject')?.toString() || '';
+    const message = formData.get('message')?.toString() || '';
+
+    // Construct the email body
+    const emailBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+
+    // Encode subject and body for the mailto link
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(emailBody);
+
+    // Construct the mailto link
+    const mailtoLink = `mailto:${contactInfo.email}?subject=${encodedSubject}&body=${encodedBody}`;
+
+    // Open the default email client
+    window.location.href = mailtoLink;
+
+    // Optional: You might want to reset the form after opening the mail client
+    // form.reset();
   };
 
   return (
@@ -54,6 +78,22 @@ export default function Contact() {
               <a href={`mailto:${contactInfo.email}`} className="hover:underline text-base sm:text-lg">{contactInfo.email}</a>
             </div>
           )}
+          {/* Add phone and location here if included in contactInfo */}
+          {/*
+          {contactInfo.phone && (
+            <div className="flex items-center text-white/80">
+              <span className="mr-2 text-cyan-500">📞</span>
+              <a href={`tel:${contactInfo.phone}`} className="hover:underline text-base sm:text-lg">{contactInfo.phone}</a>
+            </div>
+          )}
+          {contactInfo.location && (
+            <div className="flex items-center text-white/80">
+              <span className="mr-2 text-cyan-500">📍</span>
+              <span className="text-base sm:text-lg">{contactInfo.location}</span>
+            </div>
+          )}
+          */}
+
           {/* Social Media Links */}
           <div className="mt-8">
             <h3 className="text-xl sm:text-2xl font-bold mb-4">Connect with Me</h3>
@@ -132,6 +172,11 @@ export default function Contact() {
         </div>
 
       </div>
+
+      {/* Optional: Add a footer here if this page doesn't use the global layout footer */}
+       {/* <footer className="mt-16 text-center text-white/50 text-sm">
+         <p>&copy; {new Date().getFullYear()} Lauvigne Lumeda. All rights reserved.</p>
+       </footer> */}
     </main>
   );
 }
