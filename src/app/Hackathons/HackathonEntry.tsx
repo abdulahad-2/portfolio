@@ -59,12 +59,12 @@ const HackathonEntry: React.FC<HackathonEntryProps> = ({
             // Render the project image using object-contain to prevent cropping
             // Wrap image in Link if projectLink is provided
             projectLink ? (
-              <Link href={projectLink} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center"> {/* Ensure link covers the image area */}
+              <Link href={projectLink} target="_blank" rel="noopener noreferrer" className="flex w-full h-full items-center justify-center"> {/* Ensure link covers the image area */}
                 <Image
                   src={imageSrc}
                   alt={`Project for ${title}`}
-                  className="object-contain w-full h-full rounded-sm" // w-full h-full makes it responsive within its container
-                  width={500} // Add appropriate width and height for Image component
+                  className="object-contain w-full rounded-sm" // w-full h-full makes it responsive within its container
+                  width={200} // Add appropriate width and height for Image component
                   height={300}
                 />
               </Link>
