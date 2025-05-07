@@ -5,7 +5,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import BlurText from '@/blocks/TextAnimations/BlurText/BlurText'; // Example animation import
+import BlurText from '@/blocks/TextAnimations/BlurText/BlurText'; 
+import Squares from '@/blocks/Backgrounds/Squares/Squares';
 
 // Define social media links (can reuse from layout or define here)
 const socialLinks = [
@@ -171,6 +172,16 @@ export default function Contact() {
           </form>
         </div>
 
+      </div>
+
+      <div className="absolute top-0 left-0 w-full h-full z-[-5] opacity-15">
+      <Squares 
+        speed={0.5} 
+        squareSize={50} // Adjust size as needed
+        direction='diagonal' // up, down, left, right, diagonal
+        borderColor='#fff'
+        hoverFillColor='#222'
+        />
       </div>
 
       {/* Optional: Add a footer here if this page doesn't use the global layout footer */}
