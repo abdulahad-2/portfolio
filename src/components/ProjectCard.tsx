@@ -1,13 +1,10 @@
 // components/ProjectCard.tsx
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Import Link for clickable image
-
-// Removed the interface ProjectCardProps definition
 
 // Removed React.memo wrapper and React.FC type annotation
 // Destructuring props directly in the function parameters
-const ProjectCard = ({ project, index }: { // Explicitly define the type of destructured props here
+const ProjectCard = ({ project }: { // Explicitly define the type of destructured props here
     project: {
         id: number;
         number: string;

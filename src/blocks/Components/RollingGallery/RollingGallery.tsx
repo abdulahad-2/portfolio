@@ -3,6 +3,7 @@
 */
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import {
     motion,
     useMotionValue,
@@ -166,7 +167,11 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
                                     transform: itemTransform,
                                 }}
                             >
-                                <img
+                                <Image
+                                    width={300} // Added width for Image component
+                                    height={300} // Added height for Image component
+                                    unoptimized
+                                    priority
                                     src={url}
                                     alt="gallery"
                                     className="pointer-events-none w-[300px] rounded-[15px] border-[3px] border-white object-cover transition-transform duration-300 ease-out group-hover:scale-105 sm:w-[220px] h-[180px] sm:h-[150px]" // <-- Increased height here
