@@ -156,7 +156,7 @@ export default function RootLayout({
         style={{ cursor: 'none' }} // Apply cursor: none globally to the body
         >
         {/* Custom Cursor Dot */}
-        <motion.div
+        <motion.div 
             style={{
             x: dotX, // Bind x position to the dot's sprung motion value
             y: dotY, // Bind y position to the dot's sprung motion value
@@ -172,6 +172,7 @@ export default function RootLayout({
             backgroundColor: '#06b6d4', // Cyan color (Tailwind cyan-500 equivalent)
             boxShadow: '0 0 10px 4px rgba(6, 182, 212, 0.7)', // Glowing effect
             }}
+            className="hidden md:block" // Hide on mobile (optional, can be removed if you want it on mobile too)
         />
         {/* Custom Cursor Outline */}
         <motion.div
@@ -191,6 +192,7 @@ export default function RootLayout({
             // Optional: opacity for transparency
             opacity: 0.5,
             }}
+            className="hidden md:block" // Hide on mobile (optional, can be removed if you want it on mobile too)
         />
         {/* Header Section */}
         {/* Adjusted padding for different screen sizes */}
@@ -271,7 +273,7 @@ export default function RootLayout({
         {/* Sticky Social Media Container */}
         {/* Positioned fixed to the bottom right */}
         {/* Added responsive padding, rounded corners, border, and background */}
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 bg-black/60 border border-white/[.30] border-dashed rounded-full p-2 md:p-4 flex flex-col items-center space-y-2 md:space-y-5">
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 bg-black/60 border border-white/[.30] border-dashed rounded-full p-2 md:p-4 flex flex-col items-center space-y-7 md:space-y-5">
           {socialLinks.map((link) => (
             // Link for each social media icon
             <Link
