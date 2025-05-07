@@ -1,24 +1,62 @@
-// components/ProjectCard.tsx
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-// Removed React.memo wrapper and React.FC type annotation
-// Destructuring props directly in the function parameters
-const ProjectCard = ({ project }: { // Explicitly define the type of destructured props here
-    project: {
-        id: number;
-        number: string;
-        title: string;
-        category: string;
-        description: string;
-        imageSrc: string; // Path to the project image
-        link?: string; // Optional link for the project image
-    };
-    index: number; // The index of the project in the array
-}) => {
+interface ProjectCardProps {
+  project: {
+    id: number;
+    number: string;
+    title: string;
+    category: string;
+    description: string;
+    imageSrc: string; 
+    link: string; 
+  };
+  index: number; 
+}
 
-  // Removed the switch statement for layout patterns.
-  // Applying fixed classes for a consistent layout.
+// --- Optimization 1: Use React.memo ---
+// Wrap the component with React.memo. This prevents the component from re-rendering
+// if its props (project and index) have not shallowly changed.
+const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) => {
+  // Determine the layout pattern based on the index (0, 1, 2, 3 repeats)
+  const pattern = index % 4;
+
+  // Define classes for positioning the large project number absolutely
+  let numberPositionClasses = '';
+  // Define classes for text alignment of the content block
+  let contentAlignmentClasses = '';
+  // Define order classes for the image and text blocks
+  let imageOrderClass = '';
+  let textOrderClass = '';
+
+
+  switch (pattern) {
+    case 0: // Pattern 1: Number Top-Left, Text Top-Right, Image Below Text
+      numberPositionClasses = 'top-4 left-4'; // Added padding from edge
+      contentAlignmentClasses = 'text-right items-end'; // Align text to the right
+      textOrderClass = 'order-1'; // Text comes first
+      imageOrderClass = 'order-2'; // Image comes second
+      break;
+    case 1: // Pattern 2: Number Bottom-Left, Text Top-Right, Image Above Text
+      numberPositionClasses = 'bottom-4 left-4'; // Added padding from edge
+      contentAlignmentClasses = 'text-right items-end'; // Align text to the right
+      textOrderClass = 'order-2'; // Text comes second
+      imageOrderClass = 'order-1'; // Image comes first
+      break;
+    case 2: // Pattern 3: Number Top-Right, Text Top-Left, Image Below Text
+      numberPositionClasses = 'top-4 right-4'; // Added padding from edge
+      contentAlignmentClasses = 'text-left items-start'; // Align text to the left
+      textOrderClass = 'order-1'; // Text comes first
+      imageOrderClass = 'order-2'; // Image comes second
+      break;
+    case 3: // Pattern 4: Number Bottom-Right, Text Top-Left, Image Above Text
+      numberPositionClasses = 'bottom-4 right-4'; // Added padding from edge
+      contentAlignmentClasses = 'text-left items-start'; // Align text to the left
+      textOrderClass = 'order-2'; // Text comes second
+      imageOrderClass = 'order-1'; // Image comes first
+      break;
+  }
 
   // Handle click to redirect
   const handleImageClick = () => {
@@ -28,63 +66,63 @@ const ProjectCard = ({ project }: { // Explicitly define the type of destructure
   };
 
   return (
-    <div
-      className="relative flex flex-col justify-between py-6 px-4 sm:px-6 md:px-8 m-2 md:m-0 border border-white border-opacity-20 bg-transparent overflow-hidden h-full" // Removed m-5, adjusted padding
+    // Use motion.div for potential future animations (like fade-in on scroll)
+    // Add a thin white border and transparent background
+    // Use 'relative' for positioning context for the absolute number
+    // Use flex-col to stack content vertically, justify-between to space text and image
+    // Removed aspect-square to allow height to be determined by content
+    <motion.div
+      className="relative flex flex-col justify-between py-6 px-15 md:m-0 m-5 border border-white border-opacity-20 bg-transparent overflow-hidden h-full"
+      // Optional: Add Framer Motion initial/animate/whileHover props here (for the whole card)
+      // For example: initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
     >
-      {/* Large Project Number - Absolutely Positioned (Consistent Top-Left) */}
-      {/* Increased padding around the number */}
-      <div className="absolute top-0 left-0 text-3xl md:text-4xl p-6 md:p-8 font-bold text-white text-opacity-10"> {/* Increased padding */}
+      {/* Large Project Number - Absolutely Positioned */}
+      <div className={`absolute md:text-6xl text-3xl p-6 font-bold text-white text-opacity-10 ${numberPositionClasses}`}>
         {project.number}
       </div>
 
       {/* Content Area (Text Block and Image Block) */}
-      {/* Using flex-col for stacking, consistent layout */}
       <div className="flex flex-col justify-between h-full">
 
         {/* Text Content Block (Title, Category, Description) */}
-        {/* Consistent text alignment (Left) */}
-        {/* Adjusted padding top to account for the absolute number and reduce space */}
-        {/* Adjusted padding left/right to align with the number padding */}
-        <div className="flex flex-col text-left items-start z-10 pt-16 px-6 sm:px-8 md:px-10 pb-4"> {/* Adjusted pt and px */}
+        <div className={`flex flex-col ${contentAlignmentClasses} ${textOrderClass} z-10 p-6`}>
             {/* Title and Category */}
             <div>
-              <h3 className="text-lg sm:text-xl md:text-xl font-semibold text-white">{project.title}</h3> {/* Responsive text size */}
-              <p className="text-xs sm:text-sm text-gray-400">{project.category}</p> {/* Responsive text size */}
+              <h3 className="md:text-xl text-md font-semibold text-white">{project.title}</h3>
+              <p className="md:text-sm text-xs text-gray-400">{project.category}</p>
             </div>
             {/* Description */}
             <div className="mt-2">
-              <p className="text-sm text-gray-300 leading-relaxed">{project.description}</p> {/* Responsive text size */}
+              <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
             </div>
         </div>
 
-        {/* Project Image Block - Now a regular div */}
+        {/* Project Image Block - Now a motion.div to handle animations and clicks */}
         {/* Added flex-grow to help manage space within the flex container */}
-        {/* Added cursor-pointer class for visual indication of clickability */}
-        {/* Added hover effects using Tailwind classes */}
-        {/* The onClick handler remains the same */}
-        {/* Added responsive padding to the image container */}
-         {/* Adjusted padding left/right to align with the number padding */}
-        <div
-            // Added ease-in-out and changed transition-opacity to transition-all
-            className="relative w-full flex-grow rounded-xl overflow-hidden z-10 cursor-pointer transition-all duration-300 ease-in-out hover:opacity-100 hover:scale-105 px-6 sm:px-8 md:px-10 pb-4"
+        {/* Added initial opacity, hover effects, transition, and onClick handler */}
+        <motion.div
+            className={`relative w-full flex-grow rounded-xl overflow-hidden z-10 ${imageOrderClass}`} // Added cursor-pointer
+            initial={{ opacity: 0.7 }} // Changed initial opacity to 70%
+            whileHover={{ opacity: 1, scale: 1.05 }} // Hover effects: opacity 100%, scale 10% (1.05 is 5%)
+            transition={{ duration: 0.3 }} // Smooth transition for hover effects
             onClick={handleImageClick} // Handle click to redirect
         >
             {/* Use the Image component here - Using explicit width/height */}
             {/* Make sure these width/height are representative of the display size */}
             {/* Also, ensure your source images are reasonably sized, not huge files */}
-            {/* Added object-contain for responsive image scaling */}
             <Image
               src={project.imageSrc}
               alt={`${project.title} image`}
               width={500} // Using the explicit width
-              height={300} // Adjusted height for a potentially wider aspect ratio
-              className="object-contain w-full h-full" // Ensure image scales within its container
+              height={500} // Using the explicit height
             />
-        </div>
+        </motion.div>
 
       </div> {/* End Content Area */}
-    </div>
+    </motion.div>
   );
-};
+}); // End of React.memo wrap
+
+ProjectCard.displayName = 'ProjectCard'; // Add a display name for better debugging
 
 export default ProjectCard;

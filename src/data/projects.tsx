@@ -37,7 +37,6 @@ export const projects = [
       imageSrc: '/proj/projectFour.png',
       link: 'https://github.com/Yuyuhiei/conso-web-ide',
     },
-    // Add more projects following this structure
     {
       id: 5,
       number: '05', // The pattern will repeat

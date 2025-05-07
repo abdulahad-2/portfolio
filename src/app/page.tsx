@@ -230,7 +230,7 @@ export default function Home() {
         </div>
 
         {/* Experience Section */}
-        <div className="flex w-full items-center justify-center p-4 md:mt-40 mt-5">
+        <div className="flex w-full items-center justify-center p-4 md:mt-25 mt-5">
           <BlurText
             text=" My Experience"
             delay={150}
@@ -242,7 +242,7 @@ export default function Home() {
         </div>
         <ExperienceTimeline />
 
-        <div className="flex w-full items-center justify-center p-4 md:mt-40 mt-5 font-extrabold">
+        <div className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 font-extrabold">
           <BlurText
             text=" My Projects"
             delay={150}
@@ -255,7 +255,7 @@ export default function Home() {
 
         {/* Projects Section Start */}
         {/* Modified this div to use a grid layout for two columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-5xl mx-auto mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full max-w-[1400px] mx-auto mt-10">
              {/* Now mapping over the imported projects array */}
              {projects.map((project, index) => (
                <ProjectCard key={project.id} project={project} index={index} />
