@@ -1,0 +1,137 @@
+'use client'; // This page uses client-side interactivity (form, potential animations)
+
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import BlurText from '@/blocks/TextAnimations/BlurText/BlurText'; // Example animation import
+
+// Define social media links (can reuse from layout or define here)
+const socialLinks = [
+    { platform: "GitHub", href: "https://github.com/Yuyuhiei", iconPath: "/icons/github_icon.svg" }, // <-- Replace YOUR_GITHUB_LINK and icon path
+    { platform: "LinkedIn", href: "https://www.linkedin.com/in/lauvigne-lumeda/", iconPath: "/icons/linkedin_icon.svg" }, // <-- Replace YOUR_LINKEDIN_LINK and icon path
+    { platform: "Gmail", href: "mailto:lumedalauvigne@gmail.com", iconPath: "/icons/gmail_icon.svg" }, // <-- Replace YOUR_EMAIL_ADDRESS and icon path
+  ];
+
+// Define contact information
+const contactInfo = {
+    email: "lumedalauvigne@gmail.com", 
+};
+
+
+export default function Contact() {
+  // Basic form submission handler (client-side only, won't send email)
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // You would typically handle form submission here, e.g., send data to an API route
+    console.log('Form submitted!');
+    // Add logic to clear form, show success message, etc.
+  };
+
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      {/* Section Title */}
+      <div className="text-center mb-12 md:mb-16">
+        {/* Using BlurText for consistency, adjust as needed */}
+        <BlurText
+          text="Get In Touch"
+          delay={50}
+          animateBy="letters"
+          direction="top"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center"
+        />
+      </div>
+
+      {/* Contact Content Container */}
+      <div className="w-full max-w-md md:max-w-3xl lg:max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        {/* Contact Information Section */}
+        <div className="flex flex-col space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Contact Information</h2>
+          {contactInfo.email && (
+            <div className="flex items-center text-white/80">
+              {/* You can add an icon here, e.g., a mail icon SVG or Image */}
+              <span className="mr-2 text-cyan-500">📧</span> {/* Example icon */}
+              <a href={`mailto:${contactInfo.email}`} className="hover:underline text-base sm:text-lg">{contactInfo.email}</a>
+            </div>
+          )}
+          {/* Social Media Links */}
+          <div className="mt-8">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4">Connect with Me</h3>
+            <div className="flex space-x-4">
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.platform}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-transform duration-200 hover:scale-110"
+                >
+                  <Image
+                    src={link.iconPath} // Use the icon path
+                    alt={`${link.platform} icon`}
+                    width={30} // Adjust size as needed
+                    height={30} // Adjust size as needed
+                    className="w-7 h-7 sm:w-8 sm:h-8 object-contain" // Responsive sizing
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Form Section */}
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Send a Message</h2>
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-white/80 text-sm font-medium mb-1">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full px-3 py-2 bg-[#1a1b1c] border border-white/[.15] rounded-md focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-3 py-2 bg-[#1a1b1c] border border-white/[.15] rounded-md focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="subject" className="block text-white/80 text-sm font-medium mb-1">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                className="w-full px-3 py-2 bg-[#1a1b1c] border border-white/[.15] rounded-md focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-white/80 text-sm font-medium mb-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                className="w-full px-3 py-2 bg-[#1a1b1c] border border-white/[.15] rounded-md focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 bg-cyan-600 text-white font-bold rounded-md hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-black transition duration-200"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </main>
+  );
+}
