@@ -3,10 +3,13 @@
 /* Keep your existing Tailwind import */
 @import "tailwindcss";
 
-/* Keep your root variables */
+/*
+  Removed the @media (prefers-color-scheme: dark) block.
+  Set the dark mode colors as the default in :root.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a; /* Dark background color */
+  --foreground: #ededed; /* Light foreground color */
 }
 
 /* Keep your theme rule */
@@ -17,13 +20,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Keep your dark mode media query */
-@media (prefers-color-scheme: dark) {
+/*
+  Removed the @media (prefers-color-scheme: dark) block
+  as the dark mode colors are now the default.
+*/
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 /* Add this CSS block to your global stylesheet */
 .custom-corner-border {
@@ -40,7 +46,8 @@
   position: absolute; /* Position relative to the .custom-corner-border parent */
   width: 20px; /* Set the length of the horizontal/vertical corner lines */
   height: 20px; /* Set the length of the horizontal/vertical corner lines */
-  border-color: #ffffff; /* Use the color equivalent of Tailwind's gray-800 */
+  /* Use a color that contrasts with the dark background */
+  border-color: #374151; /* Example: Tailwind gray-700 equivalent */
   border-style: solid;
   border-width: 0; /* Start with no border, define specific borders below */
   box-sizing: border-box; /* Include the pseudo-element's border in its size */
@@ -64,22 +71,23 @@
 }
 
 /*
-   To get the Top-Right and Bottom-Left corners as well using this
-   pseudo-element approach directly on the card div is not possible
-   with just ::before and ::after. You would typically need to:
-   1. Add wrapper elements inside your card divs to apply more pseudo-elements.
-   2. Use a more advanced CSS technique like border-image or background gradients
-      which can be more complex to set up for this specific L-shape effect.
+  To get the Top-Right and Bottom-Left corners as well using this
+  pseudo-element approach directly on the card div is not possible
+  with just ::before and ::after. You would typically need to:
+  1. Add wrapper elements inside your card divs to apply more pseudo-elements.
+  2. Use a more advanced CSS technique like border-image or background gradients
+     which can be more complex to set up for this specific L-shape effect.
 
-   The code above provides the Top-Left and Bottom-Right corners as requested.
-   If you absolutely need all four corners with this style, let me know,
-   and we can explore options that might involve slightly restructuring the HTML
-   inside the card divs.
+  The code above provides the Top-Left and Bottom-Right corners as requested.
+  If you absolutely need all four corners with this style, let me know,
+  and we can explore options that might involve slightly restructuring the HTML
+  inside the card divs.
 */
 
 
 /* Keep your existing body styles and add position relative */
 body {
+  /* These will now use the dark colors defined in :root */
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-gilroy), Arial, Helvetica, sans-serif;
@@ -119,4 +127,3 @@ body::after {
 /* Optional: Animation styles (keep commented out unless needed) */
 /* @keyframes noiseAnimation { ... } */
 /* body::after { ... animation: noiseAnimation ... } */
-
