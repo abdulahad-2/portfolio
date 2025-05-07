@@ -115,14 +115,6 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) 
               alt={`${project.title} image`}
               width={500} // Using the explicit width
               height={500} // Using the explicit height
-              // --- Optimization 2: Image Loading ---
-              // layout="intrinsic" or "fixed" work with explicit width/height
-              // layout="responsive" is often better if width changes (e.g., on mobile) and requires a parent with width
-              // layout="fill" requires a parent with relative/absolute positioning and dimensions
-              // The current explicit width/height with default layout is essentially "intrinsic"
-              // Add 'priority' only for images above the fold that need to load quickly.
-              // If you have many cards, DON'T add priority to all of them.
-              // priority={index === 0} // Example: Add priority only to the first image if it's visible initially
             />
         </motion.div>
 
