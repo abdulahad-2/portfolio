@@ -17,7 +17,6 @@ import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 import ExperienceTimeline from '@/components/ExperienceTimeline';
 import SkillTag from '@/components/SkillTag'; // Assuming SkillTag is in components folder
 import ProjectCard from '@/components/ProjectCard'; // Import the new ProjectCard component
-import { desc } from "framer-motion/client";
 
 // data/projects.ts
 // Define your projects array (add your actual project data here)
