@@ -122,7 +122,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
     };
 
     return (
-        <div className="relative h-[450px] w-full overflow-hidden">
+        <div className="relative h-[275px] md:h-[450px] w-full overflow-hidden">
             <div
                 className="absolute top-0 left-0 h-full w-[48px] z-10"
                 style={{
