@@ -122,7 +122,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
     };
 
     return (
-        <div className="relative h-[300px] w-full overflow-hidden">
+        <div className="relative h-[450px] w-full overflow-hidden">
             <div
                 className="absolute top-0 left-0 h-full w-[48px] z-10"
                 style={{
@@ -174,7 +174,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
                                     priority
                                     src={url}
                                     alt="gallery"
-                                    className="pointer-events-none w-[300px] rounded-[15px] border-[3px] border-white object-cover transition-transform duration-300 ease-out group-hover:scale-105 sm:w-[220px] h-[180px] sm:h-[150px]" // <-- Increased height here
+                                    className="pointer-events-none rounded-[15px] border-[3px] border-white object-cover transition-transform duration-300 ease-out group-hover:scale-105 w-[200px] h-[190px] md:h-[270px] md:w-[310px]" // <-- Increased height here
                                 />
                             </div>
                         );

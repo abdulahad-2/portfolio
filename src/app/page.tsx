@@ -17,6 +17,7 @@ import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 import ExperienceTimeline from '@/components/ExperienceTimeline';
 import SkillTag from '@/components/SkillTag'; // Assuming SkillTag is in components folder
 import ProjectCard from '@/components/ProjectCard'; // Import the new ProjectCard component
+import { desc } from "framer-motion/client";
 
 // data/projects.ts
 // Define your projects array (add your actual project data here)
@@ -25,8 +26,14 @@ const projects = [
     id: 1,
     number: '01',
     title: 'Haliya: The AI Fortune Teller',
-    category: 'Web Development',
     description: 'Web Developer',
+    techstack: [ // <-- Add paths to tech stack icons for Procrash
+        '/techstack/react.svg',
+        '/techstack/css.svg',
+        '/techstack/rasa.svg',
+        '/techstack/openai.svg',
+        '/techstack/python.svg',
+    ],
     imageSrc: '/proj/projectOne.png', 
     link: 'https://github.com/Yuyuhiei/Haliya-The-AI-Fortune-Teller',
   },
@@ -34,8 +41,12 @@ const projects = [
     id: 2,
     number: '02',
     title: 'GDSC PLM Website',
-    category: 'Web Development',
     description: 'Web Developer',
+    techstack: [
+        '/techstack/nextjs.svg',
+        '/techstack/tailwind.svg',
+        '/techstack/shadcn.svg',
+    ],
     imageSrc: '/proj/projectTwo.png',
     link: 'https://www.gdsc-plm.org/',
   },
@@ -43,8 +54,12 @@ const projects = [
     id: 3,
     number: '03',
     title: 'GrievDesk',
-    category: 'Web Development',
     description: 'Full Stack Developer',
+    techstack: [
+        '/techstack/react.svg',
+        '/techstack/css.svg',
+        '/techstack/springboot.svg',
+    ],
     imageSrc: '/proj/projectThree.png',
     link: 'https://plmce-grievdesk.web.app/',
   },
@@ -52,17 +67,26 @@ const projects = [
     id: 4,
     number: '04',
     title: 'Conso Programming Language and Compiler',
-    category: 'Full Stack Development',
     description: 'Full Stack Developer',
+    techstack: [
+        '/techstack/react.svg',
+        '/techstack/css.svg',
+        '/techstack/python.svg',
+        '/techstack/fastapi.svg',
+        '/techstack/websockets.svg',
+    ],
     imageSrc: '/proj/projectFour.png',
     link: 'https://github.com/Yuyuhiei/conso-web-ide',
   },
   {
     id: 5,
-    number: '05', // The pattern will repeat
+    number: '05', 
     title: 'AceFrame',
-    category: 'Web Development',
     description: 'Web Developer',
+    techstack: [
+        '/techstack/nextjs.svg',
+        '/techstack/tailwind.svg',
+    ],
     imageSrc: '/proj/projectFive.png',
     link: 'https://aceframe.web.app/', 
   },
@@ -70,8 +94,11 @@ const projects = [
     id: 6,
     number: '06',
     title: 'PLM Enrolment System',
-    category: 'Web Application',
     description: 'Database Administrator and Developer',
+    techstack: [
+        '/techstack/java.svg',
+        '/techstack/apachederby.svg',
+    ],
     imageSrc: '/proj/projectSix.png',
     link: 'https://github.com/Yuyuhiei/PLM-Regulars-Enrolment-System',
   },
@@ -93,9 +120,6 @@ const devSkills = [
 const contentSkills = [
   'Figma', 'Canva', 'Capcut', 'Adobe Premiere Pro', 'Adobe Illustrator'
 ];
-
-// Remove the 'const projects = [...]' block from here
-
 
 export default function Home() {
   // Removed mobileMenuOpen state
@@ -241,7 +265,7 @@ export default function Home() {
               <TiltedCard
                 imageSrc="/photos/tiltedcard.svg"
                 altText="Yuyuhiei"
-                captionText="Lauvigne Lumeda"
+                captionText="Lauvigne Lumeda" 
                 containerHeight="600px"
                 containerWidth="500px"
                 imageHeight="600px"

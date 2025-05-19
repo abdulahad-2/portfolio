@@ -7,8 +7,8 @@ interface ProjectCardProps {
     id: number;
     number: string;
     title: string;
-    category: string;
     description: string;
+    techstack: string[];
     imageSrc: string; 
     link: string; 
   };
@@ -89,11 +89,16 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) 
             {/* Title and Category */}
             <div>
               <h3 className="md:text-xl text-md font-semibold text-white">{project.title}</h3>
-              <p className="md:text-sm text-xs text-gray-400">{project.category}</p>
+              <p className="md:text-sm text-xs text-gray-400">{project.description}</p>
             </div>
             {/* Description */}
             <div className="mt-2">
-              <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
+              {/* make the techstack mapped as images */}
+              <div className="flex space-x-2">
+                {project.techstack.map((icon, index) => (
+                  <Image key={index} src={icon} alt={`Tech stack icon ${index}`} width={24} height={24} />
+                ))}
+              </div>
             </div>
         </div>
 

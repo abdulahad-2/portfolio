@@ -1,7 +1,7 @@
 // src/app/Hackathons.tsx
 
 "use client";
-
+ 
 import React from "react";
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
 import RollingGallery from "@/blocks/Components/RollingGallery/RollingGallery";
