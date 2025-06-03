@@ -68,7 +68,20 @@ const hackathonEntriesData = [
         '/techstack/gcp.svg',
      ],
   },
-  // Add more entries here
+  {
+    entryNumber: "05",
+    title: "Neosolutions",
+    award: "Top 5 Finalist",
+    description: "A CRM powered by Generative AI that transforms customer service by automatically detecting and processing conversations using NLP. It streamlines interactions, providing one-click access to relevant documentation and replies. Plus, it offers automated Kanban tracking for tickets and simulates AI resolution for low-level concerns.",
+    imageSrc: '/solutions/neosolutions.svg', // Replace with the actual image path
+    projectLink: "https://neosolutions-tenext-ai.vercel.app/", // <-- Add the link for Neosolutions
+    trophyType: "participant", // Specify the trophy type (using participant as a placeholder for Top 5)
+    techStackIcons: [ // <-- Add paths to tech stack icons for Neosolutions
+        '/techstack/nextjs.svg',
+        '/techstack/tailwind.svg',
+        '/techstack/gemini.svg',
+    ],
+  }
 ];
 
 export default function Hackathons() {
