@@ -75,7 +75,7 @@ const projects = [
         '/techstack/websockets.svg',
     ],
     imageSrc: '/proj/projectFour.png',
-    link: 'https://github.com/Yuyuhiei/conso-web-ide',
+    link: 'https://conso-frontend-v2.onrender.com/',
   },
   {
     id: 5,
