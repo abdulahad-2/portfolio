@@ -213,17 +213,24 @@ export default function Home() {
   return (
     <>
       <main className="flex-grow flex flex-col items-center h-full relative pt-20">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-600/5 to-purple-600/5 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/20 pointer-events-none" />
+        {/* Enhanced Hero Banner Background - Blue, Black, White Theme */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-slate-800/20 to-cyan-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-800/10 to-slate-900/20" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/40" />
+
+        {/* Luxury mesh gradient overlay for banner */}
+        <div className="absolute top-0 left-0 right-0 h-screen bg-gradient-to-br from-blue-400/8 via-cyan-400/12 to-slate-600/15" />
+        <div className="absolute top-0 left-0 right-0 h-screen bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-cyan-500/5 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-screen bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-blue-400/5 via-cyan-400/8 to-white/8" />
 
         {/* Animated background particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {windowSize.width > 0 &&
-            [...Array(20)].map((_, i) => (
+            [...Array(30)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
+                className="absolute w-1 h-1 bg-gradient-to-r from-cyan-400/60 to-purple-400/60 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"
                 initial={{
                   x: Math.random() * windowSize.width,
                   y: Math.random() * windowSize.height,
@@ -240,9 +247,9 @@ export default function Home() {
             ))}
         </div>
 
-        {/* Hero Text */}
+        {/* Hero Text with Premium Luxury Gradient */}
         <motion.div
-          className="w-full flex justify-center items-center my-4 md:mt-15 text-center font-bold relative px-4 md:px-0"
+          className="w-full flex justify-center items-center my-4 md:mt-15 text-center font-bold relative px-4 md:px-0 z-10"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -253,18 +260,18 @@ export default function Home() {
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="lg:text-9xl md:text-7xl text-4xl text-center bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text"
+            className="lg:text-9xl md:text-7xl text-4xl text-center bg-gradient-to-r from-amber-200 via-rose-200 to-cyan-300 bg-clip-text text- drop-shadow-[0_0_40px_rgba(251,191,36,0.6)] animate-gradient-luxury filter brightness-110"
           />
         </motion.div>
 
         <motion.div
-          className="font-bold text-center opacity-0 animate-fadeIn mt-1 md:mt-3"
+          className="font-bold text-center opacity-0 animate-fadeIn mt-1 md:mt-3 z-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
         >
           <TrueFocus
-            sentence="Full Stack Developer   UI/UX Designer   Solopreneur"
+            sentence="Full Stack Developer   UI/UX Designer   Solopreneur"
             manualMode
             blurAmount={5}
             borderColor="cyan"
@@ -272,6 +279,7 @@ export default function Home() {
             pauseBetweenAnimations={1}
           />
         </motion.div>
+
         <style jsx>{`
           @keyframes fadeIn {
             from {
@@ -283,9 +291,32 @@ export default function Home() {
               transform: translateY(0);
             }
           }
+          @keyframes gradient-luxury {
+            0%,
+            100% {
+              background-size: 300% 300%;
+              background-position: 0% 50%;
+            }
+            25% {
+              background-size: 300% 300%;
+              background-position: 100% 50%;
+            }
+            50% {
+              background-size: 300% 300%;
+              background-position: 50% 100%;
+            }
+            75% {
+              background-size: 300% 300%;
+              background-position: 50% 0%;
+            }
+          }
           .animate-fadeIn {
             animation: fadeIn 1s ease-out forwards;
             animation-delay: 0.8s;
+          }
+          .animate-gradient-luxury {
+            background-size: 300% 300%;
+            animation: gradient-luxury 12s ease infinite;
           }
           .bg-gradient-radial {
             background: radial-gradient(
@@ -297,7 +328,7 @@ export default function Home() {
 
         {/* Circular Scroll Cue + Logo */}
         <motion.div
-          className="hidden md:block w-full relative h-[300px] mt-8 mb-4 items-center"
+          className="hidden md:block w-full relative h-[300px] mt-8 mb-4 items-center z-10"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 1, ease: "easeOut" }}
@@ -324,7 +355,7 @@ export default function Home() {
 
         {/* Tech & Design Cards */}
         <motion.div
-          className="flex-grow flex flex-col md:flex-row items-start justify-center w-full md:w-9xl md:mt-35 mt-10 md:space-x-50 px-4 md:px-0"
+          className="flex-grow flex flex-col md:flex-row items-start justify-center w-full md:w-9xl md:mt-35 mt-10 md:space-x-50 px-4 md:px-0 z-10"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
@@ -428,7 +459,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Who Am I Section */}
+          {/* Who Am I Section with Premium Luxury Gradient */}
           <motion.div
             className="flex flex-col items-center md:items-start w-full max-w-2xl"
             initial={{ opacity: 0, x: 100 }}
@@ -441,7 +472,7 @@ export default function Home() {
               animateBy="words"
               direction="top"
               onAnimationComplete={handleAnimationComplete}
-              className="md:text-7xl text-3xl font-extrabold mb-8 bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text"
+              className="md:text-7xl text-3xl font-extrabold mb-8 bg-gradient-to-r from-emerald-200 via-cyan-200 to-purple-300 bg-clip-text text- drop-shadow-[0_0_50px_rgba(6,182,212,0.8)] animate-gradient-luxury filter brightness-125"
             />
 
             {/* Introduction Text */}
@@ -529,116 +560,136 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Experience Section */}
-        <motion.div
-          className="flex w-full items-center justify-center p-4 md:mt-25 mt-5"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <BlurText
-            text="My Experience"
-            delay={150}
-            animateBy="words"
-            direction="top"
-            onAnimationComplete={handleAnimationComplete}
-            className="md:text-7xl text-3xl font-extrabold bg-gradient-to-r from-white via-green-200 to-emerald-300 bg-clip-text text"
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <ExperienceTimeline />
-        </motion.div>
+        {/* Experience Section with Premium Background & Luxury Gradient */}
+        <div className="relative w-full">
+          {/* Experience Solid Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/20 to-slate-900" />
+          <div className="absolute inset-0 bg-gradient-to-r from-green-900/15 to-teal-900/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-600/15 via-green-600/8 to-transparent" />
+          <div className="absolute inset-0 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-emerald-500/8 via-green-500/12 to-teal-500/15" />
 
-        {/* Projects Section */}
-        <motion.div
-          className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 font-extrabold"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <BlurText
-            text="My Projects"
-            delay={150}
-            animateBy="letters"
-            direction="top"
-            onAnimationComplete={handleAnimationComplete}
-            className="md:text-7xl text-3xl font-extrabold bg-gradient-to-r from-white via-orange-200 to-red-300 bg-clip-text text"
-          />
-        </motion.div>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 w-full max-w-[1400px] mx-auto mt-10 gap-6 p-4"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50, rotateY: -15 }}
-              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-            >
-              <ProjectCard project={project} index={index} />
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.div
+            className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 relative z-10"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <BlurText
+              text="My Experience"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              onAnimationComplete={handleAnimationComplete}
+              className="md:text-7xl text-3xl font-extrabold bg-gradient-to-r from-green-200 via-emerald-200 to-cyan-300 bg-clip-text text- drop-shadow-[0_0_50px_rgba(16,185,129,0.8)] animate-gradient-luxury filter brightness-125"
+            />
+          </motion.div>
+          <motion.div
+            className="relative z-10"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <ExperienceTimeline />
+          </motion.div>
+        </div>
 
-        {/* View All Button */}
-        <motion.div
-          className="flex w-full items-center justify-center mt-16 mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <Link href="/portfolios">
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow:
-                  "0 20px 40px rgba(6, 182, 212, 0.15), 0 0 60px rgba(6, 182, 212, 0.1)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="relative group bg-gradient-to-r from-gray-900/80 to-gray-800/60 border-2 border-white/20 text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:border-cyan-400 hover:text-cyan-400 overflow-hidden backdrop-blur-sm"
-            >
-              <span className="relative z-10 flex items-center space-x-2">
-                <span>View All Projects</span>
-                <motion.svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </motion.svg>
-              </span>
+        {/* Projects Section with Premium Background & Luxury Gradient */}
+        <div className="relative w-full">
+          {/* Projects Solid Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-blue-950/40 to-slate-800" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-blue-800/25" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/12 via-blue-400/6 to-transparent" />
+          <div className="absolute inset-0 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-white/8 to-cyan-600/12" />
+
+          <motion.div
+            className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 font-extrabold relative z-10"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <BlurText
+              text="My Projects"
+              delay={150}
+              animateBy="letters"
+              direction="top"
+              onAnimationComplete={handleAnimationComplete}
+              className="md:text-7xl text-3xl font-extrabold bg-gradient-to-r from-orange-200 via-red-200 to-amber-300 bg-clip-text text- drop-shadow-[0_0_50px_rgba(251,113,133,0.8)] animate-gradient-luxury filter brightness-125"
+            />
+          </motion.div>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 w-full max-w-[1400px] mx-auto mt-10 gap-6 p-4 relative z-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            {projects.map((project, index) => (
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "0%" }}
-                transition={{ duration: 0.3 }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-500/5 rounded-lg" />
-            </motion.button>
-          </Link>
+                key={project.id}
+                initial={{ opacity: 0, y: 50, rotateY: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true }}
+              >
+                <ProjectCard project={project} index={index} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* View All Button */}
+          <motion.div
+            className="flex w-full items-center justify-center mt-16 mb-20 relative z-10"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Link href="/portfolios">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow:
+                    "0 20px 40px rgba(6, 182, 212, 0.15), 0 0 60px rgba(6, 182, 212, 0.1)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="relative group bg-gradient-to-r from-gray-900/80 to-gray-800/60 border-2 border-white/20 text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-300 hover:border-cyan-400 hover:text-cyan-400 overflow-hidden backdrop-blur-sm"
+              >
+                <span className="relative z-10 flex items-center space-x-2">
+                  <span>View All Projects</span>
+                  <motion.svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="group-hover:translate-x-1 transition-transform duration-300"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </motion.svg>
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-500/5 rounded-lg" />
+              </motion.button>
+            </Link>
+          </motion.div>
+
+          {/* FAQ Section */}
+          <FAQ />
         </div>
       </main>
     </>
