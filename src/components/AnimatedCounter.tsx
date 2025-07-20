@@ -20,16 +20,28 @@ export default function AnimatedCounter({
 
   useEffect(() => {
     const start = performance.now();
-    const startVal = decimal ? 0 : 0;
+    // Start from 30-40 below the target value
+    const offset = Math.floor(Math.random() * 11) + 30; // Random between 30-40
+    const startVal = Math.max(0, value - offset); // Don't go below 0
     const diff = value - startVal;
+
+    // Set initial display to start value
+    setDisplay(
+      decimal ? parseFloat(startVal.toFixed(1)) : Math.floor(startVal)
+    );
 
     const step = (now: number) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      const current = startVal + diff * progress;
+
+      // Use easing function for smoother animation
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      const current = startVal + diff * easeOutCubic;
+
       setDisplay(
         decimal ? parseFloat(current.toFixed(1)) : Math.floor(current)
       );
+
       if (progress < 1) {
         requestAnimationFrame(step);
       }
