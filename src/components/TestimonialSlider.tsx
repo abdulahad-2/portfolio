@@ -582,7 +582,7 @@ export default function EnhancedTestimonialSlider() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-10 md:mt-20 pt-10 md:pt-20 border-t border-purple-500/30"
         >
-          <AnimatedCounter value={22} suffix="+" label="Happy Clients" />
+          <AnimatedCounter value={50} suffix="+" label="Happy Clients" />
           <AnimatedCounter value={4.9} label="Average Rating" decimal />
           <AnimatedCounter value={100} suffix="%" label="Project Success" />
           <AnimatedCounter value={350} suffix="%" label="ROI Increase" />
