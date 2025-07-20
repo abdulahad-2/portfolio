@@ -16,6 +16,7 @@ import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import SkillTag from "@/components/SkillTag";
 import ProjectCard from "@/components/ProjectCard";
+import FAQ from "@/components/faq";
 
 // Project data
 const projects = [
@@ -452,9 +453,7 @@ export default function Home() {
             >
               <p className="text-gray-300 md:text-lg text-base leading-relaxed mb-4">
                 My name is{" "}
-                <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent font-semibold">
-                  Abdul Ahad
-                </span>{" "}
+                <span className="text-cyan-300 font-semibold">Abdul Ahad</span>{" "}
                 with 4+ years of experience in web development. I&apos;m from
                 Pakistan, passionate about creating digital solutions that make
                 a difference.
@@ -640,7 +639,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-500/5 rounded-lg" />
             </motion.button>
           </Link>
-        </motion.div>
+        </div>
       </main>
     </>
   );
