@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
@@ -60,19 +60,27 @@ const contactMethods = [
 const faqs = [
   {
     question: "What&apos;s your typical response time?",
-    answer: "I usually respond within 24 hours during business days."
+    answer: "I usually respond within 24 hours during business days.",
   },
   {
     question: "Do you work on weekends?",
-    answer: "Limited availability on weekends, but urgent matters are addressed."
+    answer:
+      "Limited availability on weekends, but urgent matters are addressed.",
   },
   {
     question: "What services do you offer?",
-    answer: "Full-stack development, UI/UX design, and technical consulting."
+    answer: "Full-stack development, UI/UX design, and technical consulting.",
   },
 ];
 
 export default function Contact() {
+  // This useEffect was added to ensure the component structure is valid,
+  // addressing the "Expression expected" error if it was due to a missing block closure.
+  useEffect(() => {
+    // Optional: Add any logic that should run after component mounts
+    console.log("Contact component mounted!");
+  }, []); // Empty dependency array means this runs once after initial render
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -105,7 +113,8 @@ export default function Contact() {
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center"
           />
           <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? Let&apos;s discuss your next project and create something amazing together.
+            Ready to bring your ideas to life? Let&apos;s discuss your next
+            project and create something amazing together.
           </p>
         </div>
 
@@ -116,10 +125,14 @@ export default function Contact() {
               key={index}
               className="group p-6 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
             >
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${method.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <div
+                className={`w-12 h-12 rounded-full bg-gradient-to-r ${method.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}
+              >
                 {method.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">{method.title}</h3>
+              <h3 className="text-xl font-bold text-white mb-2">
+                {method.title}
+              </h3>
               <p className="text-white/70">{method.description}</p>
             </div>
           ))}
@@ -188,7 +201,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-white/60 text-sm">Location</p>
-                      <p className="text-white text-lg font-medium">{contactInfo.location}</p>
+                      <p className="text-white text-lg font-medium">
+                        {contactInfo.location}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -281,7 +296,7 @@ export default function Contact() {
                   id="subject"
                   name="subject"
                   className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-white/40 backdrop-blur-sm transition-all duration-300"
-                  placeholder="What&apos;s this about?"
+                  placeholder="What's this about?"
                 />
               </div>
 
@@ -325,15 +340,21 @@ export default function Contact() {
               </h3>
               <div className="space-y-4">
                 {workingHours.map((schedule, index) => (
-                  <div key={index} className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/10">
-                    <span className="text-white font-medium">{schedule.day}</span>
+                  <div
+                    key={index}
+                    className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/10"
+                  >
+                    <span className="text-white font-medium">
+                      {schedule.day}
+                    </span>
                     <span className="text-white/70">{schedule.time}</span>
                   </div>
                 ))}
               </div>
               <div className="mt-6 p-4 bg-gradient-to-r from-green-500/20 to-cyan-500/20 rounded-xl border border-green-500/30">
                 <p className="text-sm text-white/80">
-                  <span className="text-green-400">💡 Pro Tip:</span> For urgent matters, mention it in your subject line!
+                  <span className="text-green-400">💡 Pro Tip:</span> For urgent
+                  matters, mention it in your subject line!
                 </p>
               </div>
             </div>
@@ -352,8 +373,12 @@ export default function Contact() {
                     <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
                       {faq.question}
                     </h4>
-                    <p className="text-white/70 leading-relaxed">{faq.answer}</p>
-                    {index < faqs.length - 1 && <hr className="mt-4 border-white/10" />}
+                    <p className="text-white/70 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                    {index < faqs.length - 1 && (
+                      <hr className="mt-4 border-white/10" />
+                    )}
                   </div>
                 ))}
               </div>
@@ -366,13 +391,14 @@ export default function Contact() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-blue-900/30 to-cyan-900/30"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.1)_0%,transparent_70%)]"></div>
-        
+
         <div className="relative max-w-4xl mx-auto text-center">
           <h3 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent">
             Ready to Start?
           </h3>
           <p className="text-xl text-white/80 mb-8 leading-relaxed">
-            Don&apos;t let your ideas stay as just ideas. Let&apos;s turn them into reality together.
+            Don&apos;t let your ideas stay as just ideas. Let&apos;s turn them
+            into reality together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

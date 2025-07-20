@@ -25,9 +25,19 @@ interface FAQCategory {
   items: FAQItem[];
 }
 
+// Define a type for the dynamic dot styles
+interface DotStyle {
+  left: string;
+  top: string;
+  animationDelay: string;
+  animationDuration: string;
+  className: string;
+}
+
 const FAQ = () => {
   const [openItems, setOpenItems] = useState(new Set<number>());
   const [visibleCategories, setVisibleCategories] = useState(new Set<number>());
+  const [dotStyles, setDotStyles] = useState<DotStyle[]>([]); // State to hold dynamic dot styles
   const categoryRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleItem = (index: number) => {
@@ -62,6 +72,33 @@ const FAQ = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // Use useEffect to generate random dot styles only on the client-side
+  useEffect(() => {
+    const generatedStyles: DotStyle[] = [];
+    const colors = [
+      "bg-purple-400",
+      "bg-blue-400",
+      "bg-cyan-400",
+      "bg-emerald-400",
+      "bg-pink-400",
+      "bg-orange-400",
+    ];
+    const sizes = ["w-1 h-1", "w-1.5 h-1.5", "w-2 h-2"];
+
+    for (let i = 0; i < 25; i++) {
+      generatedStyles.push({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 4}s`,
+        animationDuration: `${2 + Math.random() * 6}s`,
+        className: `absolute ${colors[i % colors.length]} ${
+          sizes[i % sizes.length]
+        } rounded-full opacity-40 sm:opacity-60 animate-pulse`,
+      });
+    }
+    setDotStyles(generatedStyles);
+  }, []); // Empty dependency array ensures this runs once after initial render
 
   const faqData: FAQCategory[] = [
     {
@@ -155,7 +192,7 @@ const FAQ = () => {
         {
           question: "How do you handle application monitoring and debugging?",
           answer:
-            "I implement comprehensive logging with structured logs, error tracking with Sentry or Bugsnag, performance monitoring with APM tools, and real-time analytics. I also set up alerts for critical issues, implement health checks, and use profiling tools to identify bottlenecks.",
+          "I implement comprehensive logging with structured logs, error tracking with Sentry or Bugsnag, performance monitoring with APM tools, and real-time analytics. I also set up alerts for critical issues, implement health checks, and use profiling tools to identify bottlenecks.",
         },
       ],
     },
@@ -223,31 +260,18 @@ const FAQ = () => {
 
       {/* Enhanced floating particles with different sizes and colors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(25)].map((_, i) => {
-          const colors = [
-            "bg-purple-400",
-            "bg-blue-400",
-            "bg-cyan-400",
-            "bg-emerald-400",
-            "bg-pink-400",
-            "bg-orange-400",
-          ];
-          const sizes = ["w-1 h-1", "w-1.5 h-1.5", "w-2 h-2"];
-          return (
-            <div
-              key={i}
-              className={`absolute ${colors[i % colors.length]} ${
-                sizes[i % sizes.length]
-              } rounded-full opacity-40 sm:opacity-60 animate-pulse`}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${2 + Math.random() * 6}s`,
-              }}
-            ></div>
-          );
-        })}
+        {dotStyles.map((style, i) => ( // Use the state variable here
+          <div
+            key={i}
+            className={style.className}
+            style={{
+              left: style.left,
+              top: style.top,
+              animationDelay: style.animationDelay,
+              animationDuration: style.animationDuration,
+            }}
+          ></div>
+        ))}
       </div>
 
       {/* Animated grid pattern overlay */}

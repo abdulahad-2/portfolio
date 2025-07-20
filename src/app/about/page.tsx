@@ -260,7 +260,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+      {/* TestimonialSlider Section */}
+      <TestimonialSlider />
       {/* Experience & Journey Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-gray-900/50 to-black/50">
         <div className="max-w-7xl mx-auto">
