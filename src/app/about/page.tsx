@@ -15,11 +15,7 @@ export default function AboutPage() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        {/* Decorative lines */}
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-        <div className="absolute bottom-1/3 right-0 w-full h-px bg-gradient-to-l from-transparent via-blue-500/30 to-transparent"></div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text Content */}
           <div className="space-y-8">
             <div className="space-y-4">
@@ -81,16 +77,9 @@ export default function AboutPage() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4 relative">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10"></div>
-
-        {/* Decorative lines */}
-        <div className="absolute top-10 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-purple-400/40 to-transparent"></div>
-        <div className="absolute bottom-10 right-1/4 w-1/2 h-px bg-gradient-to-l from-transparent via-blue-400/40 to-transparent"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-white to-blue-400 bg-clip-text text-transparent">
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Technical Expertise
           </h2>
 
@@ -272,27 +261,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="relative">
-        {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-blue-900/20"></div>
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
-        <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-blue-500/50 to-transparent"></div>
-        <TestimonialSlider />
-      </section>
-
       {/* Experience & Journey Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-900/20 via-gray-900/50 to-blue-900/20 relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-1/3 w-2/3 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent"></div>
-        <div className="absolute bottom-0 right-1/3 w-2/3 h-px bg-gradient-to-l from-transparent via-blue-400/30 to-transparent"></div>
-
-        {/* Floating gradient orbs */}
-        <div className="absolute top-20 right-20 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-40 left-20 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-white to-blue-400 bg-clip-text text-transparent">
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-900/50 to-black/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             My Journey
           </h2>
 
@@ -375,20 +347,15 @@ export default function AboutPage() {
                     with.
                   </p>
                   <p>
-                    <strong className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                      Performance Matters:
-                    </strong>{" "}
-                    In e-commerce, every second counts. I optimize for speed,
-                    conversion, and seamless user experiences across all
-                    devices.
+                    <strong className="text-white">User-Centric Design:</strong>{" "}
+                    Great software isn&apos;t just about clean code—it&apos;s
+                    about creating experiences that users love and find
+                    valuable.
                   </p>
                   <p>
-                    <strong className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                      Scalable Solutions:
-                    </strong>{" "}
-                    I build with growth in mind, creating systems that can
-                    evolve with your business needs and handle increasing
-                    demands.
+                    <strong className="text-white">Collaboration:</strong> The
+                    best products are built by teams that communicate
+                    effectively and support each other&apos;s growth.
                   </p>
                 </div>
               </div>
@@ -417,20 +384,9 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-4 relative">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20"></div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
-        <div className="absolute bottom-10 right-0 w-full h-px bg-gradient-to-l from-transparent via-purple-500/40 to-transparent"></div>
-
-        {/* Floating orbs */}
-        <div className="absolute top-20 left-1/4 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/4 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Let&apos;s Build Something Amazing Together
           </h2>
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
