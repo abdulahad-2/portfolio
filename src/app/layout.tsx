@@ -33,7 +33,7 @@ const socialLinks = [
   },
   {
     platform: "Gmail",
-    href: "mailto:ahadking6152@gmail.com",
+    href: "mailto:abdul.ahadt732@gmail.com",
     iconPath: "/icons/gmail_icon.svg",
   },
 ];
