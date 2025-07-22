@@ -6,7 +6,7 @@ A modern, responsive portfolio website built with cutting-edge web technologies 
 
 ## 🚀 Live Demo
 
-[View Live Website](https://portfolio-prei.vercel.app/) <!-- Replace with your actual deployed URL -->
+[View Live Website](https://portfolio-prei.vercel.app/)
 
 ## 📋 Table of Contents
 
@@ -114,34 +114,50 @@ The application is optimized for deployment on platforms like:
 
 ```
 portfolio/
-├── public/                 # Static assets
-│   ├── images/            # Image files
-│   ├── icons/             # Icon files
-│   └── ss.png            # Main screenshot
-├── src/                   # Source code
+├── .next/                  # Next.js build output (auto-generated)
+├── node_modules/           # Dependencies (auto-generated)
+├── public/                 # Static assets served at root
+│   ├── images/            # Image files and screenshots
+│   ├── icons/             # Favicon and app icons
+│   └── ss.png             # Main portfolio screenshot
+├── src/                   # Source code directory
+│   ├── app/               # App Router directory (Next.js 13+)
+│   │   ├── globals.css    # Global styles
+│   │   ├── layout.tsx     # Root layout component
+│   │   ├── page.tsx       # Home page
+│   │   └── favicon.ico    # App favicon
 │   ├── components/        # Reusable React components
-│   │   ├── Header/
-│   │   ├── Footer/
-│   │   ├── Hero/
-│   │   ├── Projects/
-│   │   └── Contact/
-│   ├── pages/            # Next.js pages
-│   │   ├── api/          # API routes
-│   │   ├── _app.tsx      # App component
-│   │   ├── _document.tsx # Document component
-│   │   └── index.tsx     # Home page
-│   ├── styles/           # CSS and styling files
-│   │   ├── globals.css
-│   │   └── components/
-│   ├── lib/              # Utility functions
-│   ├── hooks/            # Custom React hooks
-│   └── types/            # TypeScript type definitions
-├── .gitignore            # Git ignore rules
-├── .eslintrc.json        # ESLint configuration
-├── tsconfig.json         # TypeScript configuration
-├── next.config.js        # Next.js configuration
-├── package.json          # Project dependencies
-└── README.md            # Project documentation
+│   │   ├── ui/            # Base UI components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   └── input.tsx
+│   │   ├── Header.tsx     # Site header
+│   │   ├── Footer.tsx     # Site footer
+│   │   ├── Hero.tsx       # Hero section
+│   │   ├── About.tsx      # About section
+│   │   ├── Skills.tsx     # Skills section
+│   │   ├── Projects.tsx   # Projects showcase
+│   │   ├── Experience.tsx # Experience section
+│   │   └── Contact.tsx    # Contact form
+│   ├── lib/               # Utility functions
+│   │   └── utils.ts       # Helper functions
+│   ├── data/              # Static data and content
+│   │   ├── projects.ts    # Projects information
+│   │   ├── skills.ts      # Skills data
+│   │   └── experience.ts  # Work experience
+│   └── types/             # TypeScript type definitions
+│       └── index.ts       # Type definitions
+├── .env.local             # Environment variables (gitignored)
+├── .env.example           # Environment variables template
+├── .eslintrc.json         # ESLint configuration
+├── .gitignore             # Git ignore rules
+├── components.json        # shadcn/ui configuration (if used)
+├── next.config.js         # Next.js configuration
+├── package.json           # Dependencies and scripts
+├── package-lock.json      # Dependency lock file
+├── README.md              # Project documentation
+├── tailwind.config.js     # Tailwind CSS configuration
+└── tsconfig.json          # TypeScript configuration
 ```
 
 ### Mobile View
@@ -201,9 +217,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Abdul Ahad**
 
 - GitHub: [@abdulahad-2](https://github.com/abdulahad-2)
-- Portfolio: (https://portfolio-prei.vercel.app/)
+- Portfolio: https://portfolio-prei.vercel.app/
 - Email: ahadking6152@example.com
-- LinkedIn: (https://www.linkedin.com/in/abdul-ahad-7908a82b4/)
+- LinkedIn: https://www.linkedin.com/in/abdul-ahad-7908a82b4/
 
 ## 🙏 Acknowledgments
 
