@@ -15,11 +15,11 @@ export interface AchievementEntryProps {
 }
 
 const trophyImagePaths: Record<string, string> = {
-  first: "/trophies/gold_trophy.png",
-  second: "/trophies/silver_trophy.png",
-  third: "/trophies/bronze_trophy.png",
-  special: "/trophies/special_trophy.png",
-  participant: "/trophies/participant_trophy.png",
+  first: "/trophies/gold_trophy.webp",
+  second: "/trophies/silver_trophy.webp",
+  third: "/trophies/bronze_trophy.webp",
+  special: "/trophies/special_trophy.webp",
+  participant: "/trophies/participant_trophy.webp",
 };
 
 const AchievementEntry: React.FC<AchievementEntryProps> = ({
