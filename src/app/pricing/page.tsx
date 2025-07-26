@@ -12,7 +12,6 @@ import {
   Smartphone,
   MessageCircle,
   Send,
-  Star,
   Sparkles, // For the 'Everything Included' plans
   Award, // For Guarantee
   Info, // For Notes
@@ -1602,7 +1601,7 @@ ${formData.projectDetails}`
                         >
                           Schedule a Free 15-minute Consultation
                         </button>
-                        —we'll recommend your perfect fit.
+                        —we&apos;ll recommend your perfect fit.
                       </li>
                     </ul>
                   </span>
@@ -1630,7 +1629,7 @@ ${formData.projectDetails}`
                 </button>
               </p>
               <p className="text-center text-white font-semibold text-lg mt-4">
-                Let's build something amazing!
+                Let&apos;s build something amazing!
               </p>
             </div>
           </div>
