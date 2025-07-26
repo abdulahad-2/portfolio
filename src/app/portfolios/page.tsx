@@ -16,7 +16,7 @@ const portfolioSpecificProjects = [
       "/techstack/nextjs.svg",
       "/techstack/ts.svg",
     ],
-    imageSrc: "/proj/reactdashboard.jpg",
+    imageSrc: "/proj/reactdashboard.webp",
     link: "https://abdulahad-2.github.io/admin-dashboard/#/dashboard",
   },
   {
@@ -31,7 +31,7 @@ const portfolioSpecificProjects = [
       "/techstack/wordpress.svg",
       "/techstack/php.svg",
     ],
-    imageSrc: "/proj/igor.jpg",
+    imageSrc: "/proj/igor.webp",
     link: "https://igorvainshtein.com/",
   },
   {
@@ -46,7 +46,7 @@ const portfolioSpecificProjects = [
       "/techstack/wordpress.svg",
       "/techstack/php.svg",
     ],
-    imageSrc: "/proj/priotize.jpg",
+    imageSrc: "/proj/priotize.webp",
     link: "https://priorityib.com.au/",
   },
   {
@@ -61,7 +61,7 @@ const portfolioSpecificProjects = [
       "/techstack/wordpress.svg",
       "/techstack/php.svg",
     ],
-    imageSrc: "/proj/australia.jpg",
+    imageSrc: "/proj/australia.webp",
     link: "https://aidn.org.au/",
   },
   {
@@ -76,7 +76,7 @@ const portfolioSpecificProjects = [
       "/techstack/wordpress.svg",
       "/techstack/php.svg",
     ],
-    imageSrc: "/proj/mehfil.jpg",
+    imageSrc: "/proj/mehfil.webp",
     link: "https://themehfil.ca/",
   },
 ];
