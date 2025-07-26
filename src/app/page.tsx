@@ -191,25 +191,6 @@ const processSkills = [
 ];
 
 export default function Home() {
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const updateWindowSize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    // Set initial size
-    updateWindowSize();
-
-    // Add event listener
-    window.addEventListener("resize", updateWindowSize);
-
-    // Cleanup
-    return () => window.removeEventListener("resize", updateWindowSize);
-  }, []);
 
   return (
     <>
@@ -446,7 +427,9 @@ export default function Home() {
             <div className="mb-8 text-center md:text-left max-w-xl">
               <p className="text-gray-300 md:text-lg text-base leading-relaxed mb-4">
                 My name is{" "}
-                <span className="text-cyan-300 font-semibold">Abdul Ahad</span>{" "}
+                <span className="text-cyan-300 font-semibold">
+                  Abdul Ahad
+                </span>{" "}
                 with 4+ years of experience in web development. I&apos;m from
                 Pakistan, passionate about creating digital solutions that make
                 a difference.
