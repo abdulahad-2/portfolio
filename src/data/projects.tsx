@@ -14,7 +14,7 @@ export const projects = [
       "/techstack/ts.svg",
       "/techstack/shopify.svg",
     ],
-    imageSrc: "/proj/projectOne.png",
+    imageSrc: "/proj/projectOne.webp",
     link: "by39tk-uv.myshopify.com",
   },
   {
@@ -27,7 +27,7 @@ export const projects = [
       "/techstack/tailwind.svg",
       "/techstack/shadcn.svg",
     ],
-    imageSrc: "/proj/projectTwo.png",
+    imageSrc: "/proj/projectTwo.webp",
     link: "https://www.gdsc-plm.org/",
   },
   {
@@ -40,7 +40,7 @@ export const projects = [
       "/techstack/css.svg",
       "/techstack/springboot.svg",
     ],
-    imageSrc: "/proj/projectThree.png",
+    imageSrc: "/proj/projectThree.webp",
     link: "https://plmce-grievdesk.web.app/",
   },
   {
@@ -55,7 +55,7 @@ export const projects = [
       "/techstack/fastapi.svg",
       "/techstack/websockets.svg",
     ],
-    imageSrc: "/proj/projectFour.png",
+    imageSrc: "/proj/projectFour.webp",
     link: "https://conso-frontend-v2.onrender.com/",
   },
   {
@@ -64,7 +64,7 @@ export const projects = [
     title: "AceFrame",
     description: "Web Developer",
     techstack: ["/techstack/nextjs.svg", "/techstack/tailwind.svg"],
-    imageSrc: "/proj/projectFive.png",
+    imageSrc: "/proj/projectFive.webp",
     link: "https://aceframe.web.app/",
   },
   {
@@ -79,7 +79,7 @@ export const projects = [
       "/techstack/css.svg",
       "/techstack/wordpress.svg",
     ],
-    imageSrc: "/proj/projectSix.png",
+    imageSrc: "/proj/projectSix.webp",
     link: "https://khanjeecanada.com/",
   },
 ];
