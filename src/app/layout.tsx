@@ -8,15 +8,16 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { gilroy } from "@/fonts/fonts";
-import Footer from "@/components/Footer";
+import { gilroy } from "@/fonts/fonts"; // Assuming this path is correct
+import Footer from "@/components/Footer"; // Assuming this path is correct
 
 // Memoize static data to prevent re-creation on every render
 const items = [
   { label: "Home", href: "/" },
   { label: "Achievements", href: "/Achievements" },
   { label: "About Me", href: "/about" },
-  { label: "Portfolio", href: "/portfolios" }, // Fixed: was "Portfolios"
+  { label: "Pricing & Plans", href: "/pricing" },
+  { label: "Portfolio", href: "/portfolios" },
   { label: "Contact", href: "/Contact" },
 ];
 
@@ -51,7 +52,13 @@ export default function RootLayout({
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
+
+  // Ensure client-side rendering is complete
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Memoize activeIndex calculation
   const activeIndex = useMemo(() => {
@@ -65,11 +72,16 @@ export default function RootLayout({
 
   // Optimized scroll handler with throttling
   const handleScroll = useCallback(() => {
+    // This check is redundant if useEffect is guarded, but harmless.
+    // if (typeof window === "undefined") return;
     const scrollY = window.scrollY;
     setScrolled(scrollY > 20);
   }, []);
 
   useEffect(() => {
+    // Only attach event listener on the client side
+    if (!isClient) return;
+
     // More efficient throttle implementation
     let ticking = false;
     const throttledScroll = () => {
@@ -84,31 +96,45 @@ export default function RootLayout({
 
     window.addEventListener("scroll", throttledScroll, { passive: true });
     return () => window.removeEventListener("scroll", throttledScroll);
-  }, [handleScroll]);
+  }, [handleScroll, isClient]); // Add isClient to dependency array
 
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Handle body overflow
+  // Handle body overflow - only on client
   useEffect(() => {
+    // Only run on client
+    if (!isClient) return;
+
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [mobileMenuOpen]);
+  }, [mobileMenuOpen, isClient]); // Add isClient to dependency array
 
   // Memoize mobile menu handler
   const toggleMobileMenu = useCallback(() => {
     setMobileMenuOpen((prev) => !prev);
   }, []);
 
+  // Base classes that don't change based on state - CONSISTENT FOR SSR
+  const baseBodyClasses = `${geistSans.variable} ${geistMono.variable} ${gilroy.variable} antialiased font-gilroy bg-black relative overflow-x-hidden`;
+
+  // FIXED: Use consistent classes for header during SSR - no conditional rendering
+  const headerClasses = `fixed top-0 left-0 right-0 z-[9999] transition-all duration-200 bg-transparent backdrop-blur-sm`;
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${gilroy.variable} antialiased font-gilroy bg-black relative overflow-x-hidden`}
-      >
+      {/*
+        FIXED: Added suppressHydrationWarning to the body tag.
+        This tells React to suppress the hydration warning for differences
+        in attributes on this element. This is commonly used for attributes
+        injected by browser extensions (like "cz-shortcut-listen=true")
+        which are outside of your control and cause hydration mismatches.
+      */}
+      <body className={baseBodyClasses} suppressHydrationWarning={true}>
         {/* Background Threads/Lines - Fixed z-index to be behind everything */}
         <div className="fixed inset-0 z-[-1] pointer-events-none">
           <svg
@@ -143,92 +169,158 @@ export default function RootLayout({
               </linearGradient>
             </defs>
 
-            {/* Diagonal threads */}
-            <motion.line
+            {/* Static lines for SSR - animations added client-side */}
+            <line
               x1="0"
               y1="0"
               x2="100%"
               y2="100%"
               stroke="url(#threadGradient)"
               strokeWidth="0.5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 2, ease: "easeInOut" }}
+              opacity="1"
             />
-            <motion.line
+            <line
               x1="100%"
               y1="0"
               x2="0"
               y2="100%"
               stroke="url(#threadGradient2)"
               strokeWidth="0.5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
+              opacity="1"
             />
-
-            {/* Horizontal threads */}
-            <motion.line
+            <line
               x1="0"
               y1="30%"
               x2="100%"
               y2="30%"
               stroke="rgba(99, 102, 241, 0.05)"
               strokeWidth="0.5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeInOut", delay: 1 }}
+              opacity="1"
             />
-            <motion.line
+            <line
               x1="0"
               y1="70%"
               x2="100%"
               y2="70%"
               stroke="rgba(16, 185, 129, 0.05)"
               strokeWidth="0.5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeInOut", delay: 1.2 }}
+              opacity="1"
             />
-
-            {/* Vertical threads */}
-            <motion.line
+            <line
               x1="25%"
               y1="0"
               x2="25%"
               y2="100%"
               stroke="rgba(245, 101, 101, 0.05)"
               strokeWidth="0.5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.8, ease: "easeInOut", delay: 0.8 }}
+              opacity="1"
             />
-            <motion.line
+            <line
               x1="75%"
               y1="0"
               x2="75%"
               y2="100%"
               stroke="rgba(168, 85, 247, 0.05)"
               strokeWidth="0.5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.8, ease: "easeInOut", delay: 1.5 }}
+              opacity="1"
             />
           </svg>
         </div>
 
-        {/* Header - Fixed z-index */}
-        <motion.header
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-200 ${
-            scrolled || mobileMenuOpen
-              ? "bg-black/90 backdrop-blur-xl border-b border-white/10"
-              : "bg-transparent backdrop-blur-sm"
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Client-side enhanced background animations */}
+        {isClient && (
+          <div className="fixed inset-0 z-[-1] pointer-events-none">
+            <svg
+              width="100%"
+              height="100%"
+              className="absolute inset-0"
+              style={{ minHeight: "100vh" }}
+              preserveAspectRatio="none"
+            >
+              <motion.line
+                x1="0"
+                y1="0"
+                x2="100%"
+                y2="100%"
+                stroke="url(#threadGradient)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+              <motion.line
+                x1="100%"
+                y1="0"
+                x2="0"
+                y2="100%"
+                stroke="url(#threadGradient2)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
+              />
+              <motion.line
+                x1="0"
+                y1="30%"
+                x2="100%"
+                y2="30%"
+                stroke="rgba(99, 102, 241, 0.05)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeInOut", delay: 1 }}
+              />
+              <motion.line
+                x1="0"
+                y1="70%"
+                x2="100%"
+                y2="70%"
+                stroke="rgba(16, 185, 129, 0.05)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeInOut", delay: 1.2 }}
+              />
+              <motion.line
+                x1="25%"
+                y1="0"
+                x2="25%"
+                y2="100%"
+                stroke="rgba(245, 101, 101, 0.05)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.8, ease: "easeInOut", delay: 0.8 }}
+              />
+              <motion.line
+                x1="75%"
+                y1="0"
+                x2="75%"
+                y2="100%"
+                stroke="rgba(168, 85, 247, 0.05)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.8, ease: "easeInOut", delay: 1.5 }}
+              />
+            </svg>
+          </div>
+        )}
+
+        {/* Header - NO conditional classes for SSR consistency */}
+        <header className={headerClasses}>
+          {/* Client-side header background overlay */}
+          {isClient && (
+            <div
+              className={`absolute inset-0 transition-all duration-200 ${
+                scrolled || mobileMenuOpen
+                  ? "bg-black/90 backdrop-blur-xl border-b border-white/10"
+                  : ""
+              }`}
+            />
+          )}
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex items-center justify-between h-20 lg:h-24">
               {/* Logo */}
               <Link href="/" className="flex-shrink-0 z-[10000]">
@@ -242,7 +334,7 @@ export default function RootLayout({
                 />
               </Link>
 
-              {/* Desktop Navigation */}
+              {/* Desktop Navigation - Only render GooeyNav on client */}
               <div className="hidden lg:flex items-center justify-center flex-1 z-[10000]">
                 <div
                   className="relative"
@@ -252,16 +344,32 @@ export default function RootLayout({
                     maxWidth: "650px",
                   }}
                 >
-                  <GooeyNav
-                    items={items}
-                    particleCount={6}
-                    particleDistances={[70, 10]}
-                    particleR={60}
-                    initialActiveIndex={activeIndex !== -1 ? activeIndex : 0}
-                    animationTime={300}
-                    timeVariance={150}
-                    colors={[1, 2, 3, 4]}
-                  />
+                  {isClient && (
+                    <GooeyNav
+                      items={items}
+                      initialActiveIndex={activeIndex !== -1 ? activeIndex : 0}
+                    />
+                  )}
+                  {/* Fallback navigation for SSR */}
+                  {!isClient && (
+                    <nav className="flex items-center space-x-4">
+                      {items.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`text-sm font-medium transition-all duration-200 hover:text-cyan-400 whitespace-nowrap px-3 py-2 rounded-md ${
+                            pathname === item.href ||
+                            (item.href !== "/" &&
+                              pathname.startsWith(item.href))
+                              ? "text-cyan-400 bg-cyan-400/10"
+                              : "text-white"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </nav>
+                  )}
                 </div>
               </div>
 
@@ -283,64 +391,46 @@ export default function RootLayout({
                 ))}
               </nav>
 
-              {/* Mobile Hamburger */}
-              <motion.button
-                whileTap={{ scale: 0.95 }}
+              {/* Mobile Hamburger - No animations during SSR */}
+              <button
                 className="md:hidden relative z-[10000] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 onClick={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
               >
                 <div className="w-6 h-5 relative flex flex-col justify-between">
-                  <motion.span
-                    animate={
-                      mobileMenuOpen
-                        ? { rotate: 45, y: 8 }
-                        : { rotate: 0, y: 0 }
-                    }
-                    transition={{ duration: 0.2 }}
-                    className="w-full h-0.5 bg-white block transform origin-center"
+                  <span
+                    className={`w-full h-0.5 bg-white block transform origin-center transition-all duration-200 ${
+                      mobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                    }`}
                   />
-                  <motion.span
-                    animate={mobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                    className="w-full h-0.5 bg-white block"
+                  <span
+                    className={`w-full h-0.5 bg-white block transition-all duration-200 ${
+                      mobileMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
                   />
-                  <motion.span
-                    animate={
-                      mobileMenuOpen
-                        ? { rotate: -45, y: -8 }
-                        : { rotate: 0, y: 0 }
-                    }
-                    transition={{ duration: 0.2 }}
-                    className="w-full h-0.5 bg-white block transform origin-center"
+                  <span
+                    className={`w-full h-0.5 bg-white block transform origin-center transition-all duration-200 ${
+                      mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                    }`}
                   />
                 </div>
-              </motion.button>
+              </button>
             </div>
           </div>
-        </motion.header>
+        </header>
 
-        {/* Mobile Overlay Menu */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: mobileMenuOpen ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
-          className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[9998] ${
-            mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        {/* Mobile Overlay Menu - Consistent for SSR */}
+        <div
+          className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[9998] transition-opacity duration-200 ${
+            mobileMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           }`}
         >
           <div className="flex flex-col items-center justify-center h-full pt-20">
             <nav className="flex flex-col items-center space-y-8">
-              {items.map((item, idx) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: mobileMenuOpen ? 1 : 0,
-                    y: mobileMenuOpen ? 0 : 20,
-                  }}
-                  transition={{ duration: 0.2, delay: idx * 0.05 }}
-                >
+              {items.map((item) => (
+                <div key={item.href}>
                   <Link
                     href={item.href}
                     className={`text-white text-2xl md:text-3xl font-medium transition-all duration-200 ${
@@ -353,31 +443,21 @@ export default function RootLayout({
                   >
                     {item.label}
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </nav>
           </div>
-        </motion.div>
+        </div>
 
         {/* Main Content */}
         <main className="pt-20 lg:pt-24 relative z-[1]">{children}</main>
 
-        {/* Social Icons */}
+        {/* Social Icons - Consistent for SSR */}
         <div className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-[100]">
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
-            className="bg-black/70 border border-white/20 border-dashed rounded-full p-3 lg:p-4 backdrop-blur-sm"
-          >
+          <div className="bg-black/70 border border-white/20 border-dashed rounded-full p-3 lg:p-4 backdrop-blur-sm">
             <div className="flex flex-col items-center space-y-4 lg:space-y-5">
-              {socialLinks.map((link, idx) => (
-                <motion.div
-                  key={link.platform}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.2, delay: 0.7 + idx * 0.05 }}
-                >
+              {socialLinks.map((link) => (
+                <div key={link.platform}>
                   <Link
                     href={link.href}
                     target="_blank"
@@ -392,10 +472,10 @@ export default function RootLayout({
                       className="w-5 h-5 lg:w-6 lg:h-6 object-contain opacity-80 hover:opacity-100"
                     />
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
         <Footer />
       </body>
