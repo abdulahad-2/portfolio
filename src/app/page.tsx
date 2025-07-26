@@ -225,28 +225,22 @@ export default function Home() {
         <div className="absolute top-0 left-0 right-0 h-screen bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-cyan-500/5 to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-screen bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-blue-400/5 via-cyan-400/8 to-white/8" />
 
-        {/* Reduced animated background particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {windowSize.width > 0 &&
-            [...Array(15)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-full shadow-[0_0_5px_rgba(6,182,212,0.3)]"
-                initial={{
-                  x: Math.random() * windowSize.width,
-                  y: Math.random() * windowSize.height,
-                }}
-                animate={{
-                  y: [null, -100, windowSize.height + 100],
-                }}
-                transition={{
-                  duration: Math.random() * 15 + 15,
-                  repeat: Infinity,
-                  delay: Math.random() * 8,
-                }}
-              />
-            ))}
-        </div>
+        {/* Dynamic Glowing Orb/Gradient for Hero Background */}
+        <motion.div
+          className="absolute inset-0 z-0 opacity-40 mix-blend-screen"
+          animate={{
+            background: [
+              'radial-gradient(circle at 20% 80%, rgba(139,92,246,0.3) 0%, rgba(59,130,246,0.1) 50%, transparent 100%)',
+              'radial-gradient(circle at 80% 20%, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.1) 50%, transparent 100%)',
+              'radial-gradient(circle at 20% 80%, rgba(139,92,246,0.3) 0%, rgba(59,130,246,0.1) 50%, transparent 100%)',
+            ],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
 
         {/* Hero Text with Premium Luxury Gradient */}
         <motion.div
@@ -261,7 +255,7 @@ export default function Home() {
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="lg:text-9xl md:text-7xl text-4xl text-center bg-gradient-to-r from-amber-200 via-rose-200 to-cyan-300 bg-clip-text text- drop-shadow-[0_0_40px_rgba(251,191,36,0.6)] animate-gradient-luxury filter brightness-110"
+            className="lg:text-9xl md:text-7xl text-4xl text-center bg-gradient-to-r from-white via-blue-300 to-purple-300 bg-clip-text drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] animate-gradient-luxury filter brightness-110" /* Updated gradient and shadow */
           />
         </motion.div>
 

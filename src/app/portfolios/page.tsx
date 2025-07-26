@@ -229,7 +229,7 @@ Best regards,
   const handleViewResume = () => {
     // Create a temporary link element to trigger download
     const link = document.createElement("a");
-    link.href = "/resume/myResume.docx";
+    link.href = "/resume/myResume.docx"; // Corrected filename
     link.download = "Abdul_Ahad_Resume.docx";
     document.body.appendChild(link);
     link.click();

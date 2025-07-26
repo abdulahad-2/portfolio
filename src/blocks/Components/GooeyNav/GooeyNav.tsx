@@ -12,111 +12,25 @@ interface GooeyNavItem {
   href: string;
 }
 
-interface Particle {
-  id: string;
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-  time: number;
-  scale: number;
-  color: number;
-  rotate: number;
-}
-
 export interface GooeyNavProps {
   items: GooeyNavItem[];
-  animationTime?: number;
-  particleCount?: number;
-  particleDistances?: [number, number];
-  particleR?: number;
-  timeVariance?: number;
-  colors?: number[];
   initialActiveIndex?: number;
 }
 
 const GooeyNav: React.FC<GooeyNavProps> = ({
   items,
-  animationTime = 200, // Reduced from 300
-  particleCount = 4, // Reduced from 6
-  particleDistances = [40, 6], // Reduced distances
-  particleR = 40, // Reduced radius
-  timeVariance = 100, // Reduced variance
-  colors = [1, 2, 3, 4],
   initialActiveIndex = 0,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const [activeIndex, setActiveIndex] = useState<number>(initialActiveIndex);
-  const [particles, setParticles] = useState<Particle[]>([]);
   const [filterPosition, setFilterPosition] = useState({
     left: 0,
     top: 0,
     width: 0,
     height: 0,
   });
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const cleanupTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Simplified noise function
-  const noise = useCallback((n = 1) => (Math.random() - 0.5) * n, []);
-
-  // Optimized getXY function
-  const getXY = useCallback(
-    (
-      distance: number,
-      pointIndex: number,
-      totalPoints: number
-    ): [number, number] => {
-      const angle = (360 / totalPoints) * pointIndex * (Math.PI / 180);
-      return [
-        distance * Math.cos(angle) + noise(1),
-        distance * Math.sin(angle) + noise(1),
-      ];
-    },
-    [noise]
-  );
-
-  // Optimized particle creation
-  const createParticles = useCallback(() => {
-    const d: [number, number] = particleDistances;
-    const r = particleR;
-    const newParticles: Particle[] = [];
-
-    for (let i = 0; i < particleCount; i++) {
-      const t = animationTime + noise(timeVariance);
-      const rotate = noise(r / 30) * 15; // Reduced rotation
-      const start = getXY(d[0], i, particleCount);
-      const end = getXY(d[1], i, particleCount);
-
-      newParticles.push({
-        id: `particle-${Date.now()}-${i}`,
-        startX: start[0],
-        startY: start[1],
-        endX: end[0],
-        endY: end[1],
-        time: t,
-        scale: 1 + noise(0.1), // Reduced scale variance
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rotate: rotate,
-      });
-    }
-
-    return newParticles;
-  }, [
-    animationTime,
-    particleCount,
-    particleDistances,
-    particleR,
-    timeVariance,
-    colors,
-    getXY,
-    noise,
-  ]);
-
-  // Optimized position update with throttling
   const updateFilterPosition = useCallback((element: HTMLElement) => {
     if (!containerRef.current) return;
 
@@ -131,30 +45,6 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     });
   }, []);
 
-  // Debounced animation trigger
-  const triggerAnimation = useCallback(() => {
-    if (isAnimating) return;
-
-    setIsAnimating(true);
-    const newParticles = createParticles();
-    setParticles(newParticles);
-
-    // Clear existing timeouts
-    if (animationTimeoutRef.current) {
-      clearTimeout(animationTimeoutRef.current);
-    }
-    if (cleanupTimeoutRef.current) {
-      clearTimeout(cleanupTimeoutRef.current);
-    }
-
-    // Cleanup particles after animation
-    cleanupTimeoutRef.current = setTimeout(() => {
-      setParticles([]);
-      setIsAnimating(false);
-    }, animationTime + timeVariance + 50);
-  }, [isAnimating, createParticles, animationTime, timeVariance]);
-
-  // Optimized click handler
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLLIElement>, index: number) => {
       if (activeIndex === index) return;
@@ -162,20 +52,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
       const liEl = e.currentTarget;
       setActiveIndex(index);
       updateFilterPosition(liEl);
-
-      // Debounce animation
-      if (animationTimeoutRef.current) {
-        clearTimeout(animationTimeoutRef.current);
-      }
-
-      animationTimeoutRef.current = setTimeout(() => {
-        triggerAnimation();
-      }, 30); // Reduced delay
     },
-    [activeIndex, updateFilterPosition, triggerAnimation]
+    [activeIndex, updateFilterPosition]
   );
 
-  // Keyboard handler
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLAnchorElement>, index: number) => {
       if (e.key === "Enter" || e.key === " ") {
@@ -192,7 +72,6 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     [handleClick]
   );
 
-  // Initial setup and cleanup
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return;
 
@@ -203,7 +82,6 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
       updateFilterPosition(activeLi);
     }
 
-    // Throttled resize handler
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -223,24 +101,17 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     return () => {
       resizeObserver.disconnect();
       clearTimeout(resizeTimeout);
-      if (animationTimeoutRef.current) {
-        clearTimeout(animationTimeoutRef.current);
-      }
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
-      }
     };
   }, [activeIndex, updateFilterPosition]);
 
-  // Optimized styles with reduced effects
   const memoizedStyles = useMemo(
     () => ({
       __html: `
       :root {
-        --color-1: #ff6b6b;
-        --color-2: #4ecdc4;
-        --color-3: #45b7d1;
-        --color-4: #96ceb4;
+        --color-1: #8B5CF6; /* Purple */
+        --color-2: #3B82F6; /* Blue */
+        --color-3: #FFFFFF; /* White */
+        --color-4: #000000; /* Black */
       }
       
       .gooey-nav-container {
@@ -248,6 +119,15 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         isolation: isolate;
         position: relative;
         z-index: 10;
+      }
+
+      .gooey-nav-ul {
+        background: linear-gradient(to right, rgba(20, 0, 40, 0.8), rgba(0, 10, 30, 0.8)); /* Darker, more distinct gradient */
+        border-radius: 9999px;
+        padding: 0.5rem 1rem;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       }
       
       .gooey-filter {
@@ -258,10 +138,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         justify-content: center;
         z-index: -1;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: blur(2px) contrast(15);
-        mix-blend-mode: multiply;
         contain: layout style;
-        opacity: 0.7;
+        opacity: 1;
+        background: linear-gradient(to right, var(--color-1), var(--color-2));
+        border-radius: 9999px;
       }
       
       .gooey-filter::before {
@@ -272,105 +152,45 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         background: transparent;
       }
       
-      .gooey-filter::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.9);
-        transform: scale(0);
-        opacity: 0;
-        z-index: -1;
-        border-radius: 9999px;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+      /* Removed .gooey-filter::after and .gooey-filter.active::after as they are no longer needed */
       
-      .gooey-filter.active::after {
-        transform: scale(1);
-        opacity: 1;
-      }
-      
-      .gooey-particle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        pointer-events: none;
-        will-change: transform;
-        contain: layout style;
-        animation: gooey-particle-move var(--duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      }
-      
-      .gooey-particle::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        background: var(--particle-color);
-        opacity: 0.8;
-        animation: gooey-particle-scale var(--duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      }
-      
-      @keyframes gooey-particle-move {
-        0% {
-          transform: translate(-50%, -50%) translate(var(--start-x), var(--start-y)) rotate(0deg);
-          opacity: 0;
-        }
-        20% {
-          opacity: 1;
-        }
-        80% {
-          transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)) rotate(var(--rotate));
-          opacity: 1;
-        }
-        100% {
-          transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)) rotate(var(--rotate));
-          opacity: 0;
-        }
-      }
-      
-      @keyframes gooey-particle-scale {
-        0% {
-          transform: scale(0);
-        }
-        30% {
-          transform: scale(calc(var(--scale) * 0.6));
-        }
-        60% {
-          transform: scale(var(--scale));
-        }
-        100% {
-          transform: scale(0);
-        }
-      }
+      /* Removed .gooey-particle and its keyframes */
       
       .gooey-nav-item {
         position: relative;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         contain: layout style;
         z-index: 1;
+        color: var(--color-3);
+        padding: 0.4em 0.7em;
+        border-radius: 9999px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
       
+      .gooey-nav-item:hover {
+        color: var(--color-3); /* White text on hover */
+        background: linear-gradient(to right, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); /* A subtle purple/blue gradient hover */
+        transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+      }
+
       .gooey-nav-item.active {
-        color: #1a1a1a;
+        color: var(--color-4); /* Black text when active */
         text-shadow: none;
+        background: linear-gradient(to right, var(--color-3), rgba(255,255,255,0.9)); /* Solid white gradient for active */
+        transform: translateY(-2px); /* Maintain a slight lift */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Very pronounced shadow */
       }
       
       .gooey-nav-item.active::after {
-        opacity: 1;
-        transform: scale(1);
-      }
-      
-      .gooey-nav-item::after {
         content: "";
         position: absolute;
         inset: 0;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.95);
+        border-radius: 9999px;
+        background: transparent;
         opacity: 0;
-        transform: scale(0);
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(1);
+        transition: none;
         z-index: -1;
       }
       
@@ -385,21 +205,15 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
       }
       
       .gooey-nav-link:focus-visible {
-        outline: 2px solid rgba(255, 255, 255, 0.8);
+        outline: 2px solid var(--color-3);
         outline-offset: 2px;
       }
       
-      /* Reduce motion for users who prefer it */
       @media (prefers-reduced-motion: reduce) {
         .gooey-filter,
         .gooey-nav-item,
-        .gooey-nav-item::after,
-        .gooey-filter::after {
-          transition: none;
-        }
-        
-        .gooey-particle {
-          display: none;
+        .gooey-nav-item::after {
+          transition: none !important;
         }
       }
     `,
@@ -414,18 +228,12 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         <nav className="flex relative">
           <ul
             ref={navRef}
-            className="flex gap-2 md:gap-3 lg:gap-4 xl:gap-6 list-none p-0 px-2 md:px-3 m-0 relative"
-            style={{
-              color: "white",
-              textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
-            }}
+            className="flex gap-2 md:gap-3 lg:gap-4 xl:gap-6 list-none p-0 m-0 relative gooey-nav-ul"
           >
             {items.map((item, index) => (
               <li
                 key={`${item.href}-${index}`}
-                className={`gooey-nav-item py-[0.4em] px-[0.7em] md:py-[0.5em] md:px-[0.8em] rounded-full text-white text-xs sm:text-sm md:text-base cursor-pointer ${
-                  activeIndex === index ? "active" : ""
-                }`}
+                className={`gooey-nav-item text-xs sm:text-sm md:text-base cursor-pointer ${activeIndex === index ? "active" : ""}`}
                 onClick={(e) => handleClick(e, index)}
               >
                 <Link
@@ -441,33 +249,14 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         </nav>
 
         <div
-          className={`gooey-filter ${isAnimating ? "active" : ""}`}
+          className={`gooey-filter`}
           style={{
             left: `${filterPosition.left}px`,
             top: `${filterPosition.top}px`,
             width: `${filterPosition.width}px`,
             height: `${filterPosition.height}px`,
           }}
-        >
-          {particles.map((particle) => (
-            <div
-              key={particle.id}
-              className="gooey-particle"
-              style={
-                {
-                  "--start-x": `${particle.startX}px`,
-                  "--start-y": `${particle.startY}px`,
-                  "--end-x": `${particle.endX}px`,
-                  "--end-y": `${particle.endY}px`,
-                  "--duration": `${particle.time}ms`,
-                  "--scale": `${particle.scale}`,
-                  "--particle-color": `var(--color-${particle.color})`,
-                  "--rotate": `${particle.rotate}deg`,
-                } as React.CSSProperties
-              }
-            />
-          ))}
-        </div>
+        />
       </div>
     </>
   );
