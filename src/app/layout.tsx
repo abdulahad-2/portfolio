@@ -120,10 +120,10 @@ export default function RootLayout({
   }, []);
 
   // Base classes that don't change based on state - CONSISTENT FOR SSR
-  const baseBodyClasses = `${geistSans.variable} ${geistMono.variable} ${gilroy.variable} antialiased font-gilroy bg-black relative overflow-x-hidden`;
+  const baseBodyClasses = `${geistSans.variable} ${geistMono.variable} ${gilroy.variable} antialiased font-gilroy relative overflow-x-hidden`;
 
   // FIXED: Use consistent classes for header during SSR - no conditional rendering
-  const headerClasses = `fixed top-0 left-0 right-0 z-[9999] transition-all duration-200 bg-transparent backdrop-blur-sm`;
+  const headerClasses = `fixed top-0 left-0 right-0 z-[9999] transition-all duration-200 bg-transparent`;
 
   return (
     <html lang="en">
@@ -314,7 +314,7 @@ export default function RootLayout({
             <div
               className={`absolute inset-0 transition-all duration-200 ${
                 scrolled || mobileMenuOpen
-                  ? "bg-black/90 backdrop-blur-xl border-b border-white/10"
+                  ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
                   : ""
               }`}
             />

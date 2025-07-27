@@ -139,7 +139,7 @@ const backend = [
 
 const databases = ["MySQL", "Firebase", "Supabase", "MongoDB", "PostgreSQL"];
 
-const mobile = ["React Native (basic)"];
+const mobile = ["React Native (basic)","Flutter (basic)"];
 
 const toolsAndDevOps = [
   "Git & GitHub",

@@ -14,6 +14,7 @@ const Footer = () => {
     { label: "About", href: "/about", icon: "👨‍💻" },
     { label: "Portfolio", href: "/portfolios", icon: "💼" },
     { label: "Achievements", href: "/Achievements", icon: "🏆" },
+    { label: "Pricing", href: "/pricing", icon: "💲" },
     { label: "Contact", href: "/Contact", icon: "📧" },
   ];
 
