@@ -543,7 +543,17 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-blue-800/25" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/12 via-blue-400/6 to-transparent" />
           <div className="absolute inset-0 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-white/8 to-cyan-600/12" />
-
+          <motion.div
+            className="flex w-full items-center justify-center p-4 mt-10 relative z-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <span className="md:text-7xl text-3xl font-extrabold bg-gradient-to-r from-blue-200 via-cyan-200 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(59,130,246,0.8)] animate-gradient-luxury filter brightness-125">
+              My Projects
+            </span>
+          </motion.div>
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1400px] mx-auto mt-10 gap-6 p-0 px-5"
             initial={{ opacity: 0 }}
