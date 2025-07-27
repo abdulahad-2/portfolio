@@ -491,7 +491,8 @@ export default function EnhancedTestimonialSlider() {
         </motion.div>
 
         <div className="relative max-w-6xl mx-auto mb-10 md:mb-20">
-          <div className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-20 flex-col gap-4">
+          {/* --- TOP NAVIGATION FOR ALL SCREENS --- */}
+          <div className="flex justify-center gap-4 mb-8">
             <button
               onClick={() => paginate(-1)}
               className="group bg-black/40 backdrop-blur-md border border-purple-500/40 rounded-full p-4 hover:bg-purple-600/30 hover:border-purple-400/60 transition-all duration-500"
@@ -512,9 +513,6 @@ export default function EnhancedTestimonialSlider() {
                 <PlayIcon className="w-6 h-6 text-white group-hover:text-purple-200" />
               )}
             </button>
-          </div>
-
-          <div className="hidden md:block absolute -right-12 top-1/2 -translate-y-1/2 z-20">
             <button
               onClick={() => paginate(1)}
               className="group bg-black/40 backdrop-blur-md border border-purple-500/40 rounded-full p-4 hover:bg-purple-600/30 hover:border-purple-400/60 transition-all duration-500"
@@ -524,35 +522,7 @@ export default function EnhancedTestimonialSlider() {
             </button>
           </div>
 
-          <div className="flex md:hidden justify-center gap-4 mb-6">
-            <button
-              onClick={() => paginate(-1)}
-              className="group bg-black/40 backdrop-blur-md border border-purple-500/40 rounded-full p-3 hover:bg-purple-600/30 hover:border-purple-400/60 transition-all duration-500"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5 text-white group-hover:text-purple-200" />
-            </button>
-            <button
-              onClick={toggleAutoPlay}
-              className={`group bg-black/40 backdrop-blur-md border border-purple-500/40 rounded-full p-3 hover:bg-purple-600/30 hover:border-purple-400/60 transition-all duration-500 ${
-                !isAutoPlay ? "bg-purple-600/30" : ""
-              }`}
-            >
-              {isAutoPlay ? (
-                <PauseIcon className="w-5 h-5 text-white group-hover:text-purple-200" />
-              ) : (
-                <PlayIcon className="w-5 h-5 text-white group-hover:text-purple-200" />
-              )}
-            </button>
-            <button
-              onClick={() => paginate(1)}
-              className="group bg-black/40 backdrop-blur-md border border-purple-500/40 rounded-full p-3 hover:bg-purple-600/30 hover:border-purple-400/60 transition-all duration-500"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5 text-white group-hover:text-purple-200" />
-            </button>
-          </div>
-
+          {/* --- TESTIMONIALS GRID --- */}
           <div className="overflow-hidden mx-4 md:mx-16">
             <AnimatePresence mode="wait" initial={false}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

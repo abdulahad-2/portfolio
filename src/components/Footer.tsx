@@ -80,7 +80,7 @@ const Footer = () => {
       label: "Email",
       value: "abdul.ahadt732@gmail.com",
       icon: "📧",
-      href: "abdul.ahadt732@gmail.com",
+      href: "mailto:abdul.ahadt732@gmail.com",
     },
     {
       label: "Location",
@@ -119,7 +119,7 @@ const Footer = () => {
       </div>
 
       {/* Main footer content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         {/* Top section */}
         <motion.div
           initial="hidden"
@@ -130,7 +130,7 @@ const Footer = () => {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12">
             {/* Logo and description */}
-            <div className="sm:col-span-2 lg:col-span-5 text-center sm:text-left">
+            <div className="sm:col-span-2 lg:col-span-5 text-center lg:text-left">
               <Link href="/" className="inline-block mb-6 lg:mb-8">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full blur-xl opacity-20" />
@@ -148,13 +148,13 @@ const Footer = () => {
                 Sage Devs
               </h2>
 
-              <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 lg:mb-8 max-w-md mx-auto sm:mx-0">
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 lg:mb-8 max-w-md mx-auto lg:mx-0">
                 Transforming ideas into extraordinary digital experiences. Where
                 innovation meets excellence in every pixel and line of code.
               </p>
 
               {/* Social links */}
-              <div className="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-4">
+              <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4">
                 {socialLinks.map((link) => (
                   <Link
                     key={link.platform}
@@ -177,19 +177,19 @@ const Footer = () => {
             </div>
 
             {/* Navigation */}
-            <div className="sm:col-span-1 lg:col-span-2 text-center sm:text-left">
+            <div className="sm:col-span-2 lg:col-span-2 text-center lg:text-left sm:mx-auto lg:mx-0">
               <h3 className="text-white font-bold text-lg sm:text-xl mb-6 lg:mb-8 relative">
                 <span className="bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
                   Navigation
                 </span>
-                <div className="absolute bottom-0 left-1/2 sm:left-0 transform -translate-x-1/2 sm:translate-x-0 h-0.5 w-12 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full" />
+                <div className="absolute bottom-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 h-0.5 w-12 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full" />
               </h3>
               <ul className="space-y-3 sm:space-y-4">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group flex items-center justify-center sm:justify-start space-x-3 text-gray-400 hover:text-white transition-all duration-300"
+                      className="group flex items-center justify-center lg:justify-start space-x-3 text-gray-400 hover:text-white transition-all duration-300"
                     >
                       <span className="text-base sm:text-lg transition-transform duration-300 group-hover:scale-110">
                         {link.icon}
@@ -206,11 +206,11 @@ const Footer = () => {
 
             {/* Services */}
             <div className="sm:col-span-2 lg:col-span-5">
-              <h3 className="text-white font-bold text-lg sm:text-xl mb-6 lg:mb-8 relative text-center sm:text-left">
+              <h3 className="text-white font-bold text-lg sm:text-xl mb-6 lg:mb-8 relative text-center lg:text-left">
                 <span className="bg-gradient-to-r from-cyan-400 to-white bg-clip-text text-transparent">
                   Our Services
                 </span>
-                <div className="absolute bottom-0 left-1/2 sm:left-0 transform -translate-x-1/2 sm:translate-x-0 h-0.5 w-12 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full" />
+                <div className="absolute bottom-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 h-0.5 w-12 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full" />
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {services.map((service) => (

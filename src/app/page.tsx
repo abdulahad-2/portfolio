@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 // Import your components and blocks
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
 import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
-// Removed Threads import since it's now in layout
 import CircularText from "@/blocks/TextAnimations/CircularText/CircularText";
 import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
@@ -35,7 +34,7 @@ const projects = [
       "/techstack/shopify.svg",
     ],
     imageSrc: "/proj/projectOne.webp",
-    link: "by39tk-uv.myshopify.com",
+    link: "https://by39tk-uv.myshopify.com/",
   },
   {
     id: 2,
@@ -139,7 +138,7 @@ const backend = [
 
 const databases = ["MySQL", "Firebase", "Supabase", "MongoDB", "PostgreSQL"];
 
-const mobile = ["React Native (basic)","Flutter (basic)"];
+const mobile = ["React Native (basic)", "Flutter (basic)"];
 
 const toolsAndDevOps = [
   "Git & GitHub",
@@ -191,10 +190,9 @@ const processSkills = [
 ];
 
 export default function Home() {
-
   return (
     <>
-      <main className="flex-grow flex flex-col items-center h-full relative pt-20">
+      <main className="flex-grow flex flex-col items-center h-full relative pt-20 w-full overflow-x-hidden">
         {/* Enhanced Hero Banner Background - Blue, Black, White Theme */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-900" />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-slate-800/20 to-cyan-900/30" />
@@ -211,9 +209,9 @@ export default function Home() {
           className="absolute inset-0 z-0 opacity-40 mix-blend-screen"
           animate={{
             background: [
-              'radial-gradient(circle at 20% 80%, rgba(139,92,246,0.3) 0%, rgba(59,130,246,0.1) 50%, transparent 100%)',
-              'radial-gradient(circle at 80% 20%, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.1) 50%, transparent 100%)',
-              'radial-gradient(circle at 20% 80%, rgba(139,92,246,0.3) 0%, rgba(59,130,246,0.1) 50%, transparent 100%)',
+              "radial-gradient(circle at 20% 80%, rgba(139,92,246,0.3) 0%, rgba(59,130,246,0.1) 50%, transparent 100%)",
+              "radial-gradient(circle at 80% 20%, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.1) 50%, transparent 100%)",
+              "radial-gradient(circle at 20% 80%, rgba(139,92,246,0.3) 0%, rgba(59,130,246,0.1) 50%, transparent 100%)",
             ],
           }}
           transition={{
@@ -225,7 +223,7 @@ export default function Home() {
 
         {/* Hero Text with Premium Luxury Gradient */}
         <motion.div
-          className="w-full flex justify-center items-center my-4 md:mt-15 text-center font-bold relative px-4 md:px-0 z-10"
+          className="w-full flex justify-center items-center my-4 md:mt-15 text-center font-bold relative px-5 md:px-0 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -236,12 +234,12 @@ export default function Home() {
             animateBy="letters"
             direction="top"
             onAnimationComplete={handleAnimationComplete}
-            className="lg:text-9xl md:text-7xl text-4xl text-center bg-gradient-to-r from-white via-blue-300 to-purple-300 bg-clip-text drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] animate-gradient-luxury filter brightness-110" /* Updated gradient and shadow */
+            className="lg:text-9xl md:text-7xl text-4xl text-center bg-gradient-to-r from-white via-blue-300 to-purple-300 bg-clip-text drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] animate-gradient-luxury filter brightness-110"
           />
         </motion.div>
 
         <motion.div
-          className="font-bold text-center mt-1 md:mt-3 z-10"
+          className="font-bold text-center mt-1 md:mt-3 z-10 px-5 md:px-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -315,9 +313,9 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Tech & Design Cards */}
+        {/* Tech & Design Cards + Who Am I Section */}
         <motion.div
-          className="flex-grow flex flex-col md:flex-row items-start justify-center w-full md:w-9xl md:mt-35 mt-10 md:space-x-50 px-4 md:px-0 z-10"
+          className="flex-grow flex flex-col lg:flex-row items-center lg:items-start justify-center w-full max-w-[1400px] lg:mt-35 mt-10 lg:space-x-12 px-5 md:px-0 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -409,7 +407,7 @@ export default function Home() {
 
           {/* Who Am I Section with Premium Luxury Gradient */}
           <motion.div
-            className="flex flex-col items-center md:items-start w-full max-w-2xl"
+            className="flex flex-col items-center lg:items-start w-full max-w-2xl mt-10 lg:mt-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
@@ -427,9 +425,7 @@ export default function Home() {
             <div className="mb-8 text-center md:text-left max-w-xl">
               <p className="text-gray-300 md:text-lg text-base leading-relaxed mb-4">
                 My name is{" "}
-                <span className="text-cyan-300 font-semibold">
-                  Abdul Ahad
-                </span>{" "}
+                <span className="text-cyan-300 font-semibold">Abdul Ahad</span>{" "}
                 with 4+ years of experience in web development. I&apos;m from
                 Pakistan, passionate about creating digital solutions that make
                 a difference.
@@ -506,7 +502,7 @@ export default function Home() {
         </motion.div>
 
         {/* Experience Section with Premium Background & Luxury Gradient */}
-        <div className="relative w-full">
+        <div className="relative w-full px-5 md:px-0">
           {/* Experience Solid Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/20 to-slate-900" />
           <div className="absolute inset-0 bg-gradient-to-r from-green-900/15 to-teal-900/20" />
@@ -514,7 +510,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-emerald-500/8 via-green-500/12 to-teal-500/15" />
 
           <motion.div
-            className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 relative z-10"
+            className="flex w-full items-center justify-center p-4 lg:mt-25 mt-5 relative z-10"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -541,7 +537,7 @@ export default function Home() {
         </div>
 
         {/* Projects Section with Premium Background & Luxury Gradient */}
-        <div className="relative w-full">
+        <div className="relative w-full px-5 md:px-0">
           {/* Projects Solid Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-black via-blue-950/40 to-slate-800" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-blue-800/25" />
@@ -549,23 +545,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-blue-600/10 via-white/8 to-cyan-600/12" />
 
           <motion.div
-            className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 font-extrabold relative z-10"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <BlurText
-              text="My Projects"
-              delay={150}
-              animateBy="letters"
-              direction="top"
-              onAnimationComplete={handleAnimationComplete}
-              className="md:text-7xl text-3xl font-extrabold bg-gradient-to-r from-orange-200 via-red-200 to-amber-300 bg-clip-text text- drop-shadow-[0_0_50px_rgba(251,113,133,0.8)] animate-gradient-luxury filter brightness-125"
-            />
-          </motion.div>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 w-full max-w-[1400px] mx-auto mt-10 gap-6 p-4 relative z-10"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1400px] mx-auto mt-10 gap-6 p-0 px-5"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -586,7 +566,6 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-
           {/* View All Button */}
           <motion.div
             className="flex w-full items-center justify-center mt-16 mb-20 relative z-10"

@@ -15,7 +15,7 @@ export const projects = [
       "/techstack/shopify.svg",
     ],
     imageSrc: "/proj/projectOne.webp",
-    link: "by39tk-uv.myshopify.com",
+    link: "https://by39tk-uv.myshopify.com/",
   },
   {
     id: 2,

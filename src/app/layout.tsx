@@ -373,27 +373,9 @@ export default function RootLayout({
                 </div>
               </div>
 
-              {/* Tablet Navigation */}
-              <nav className="hidden md:flex lg:hidden items-center space-x-3 xl:space-x-5 z-[10000]">
-                {items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`text-xs xl:text-sm font-medium transition-all duration-200 hover:text-cyan-400 whitespace-nowrap px-2 py-1 rounded-md ${
-                      pathname === item.href ||
-                      (item.href !== "/" && pathname.startsWith(item.href))
-                        ? "text-cyan-400 bg-cyan-400/10"
-                        : "text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
               {/* Mobile Hamburger - No animations during SSR */}
               <button
-                className="md:hidden relative z-[10000] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                className="lg:hidden relative z-[10000] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 onClick={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
               >
@@ -421,7 +403,7 @@ export default function RootLayout({
 
         {/* Mobile Overlay Menu - Consistent for SSR */}
         <div
-          className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[9998] transition-opacity duration-200 ${
+          className={`lg:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[9998] transition-opacity duration-200 ${
             mobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
