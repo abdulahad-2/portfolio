@@ -160,13 +160,7 @@ portfolio/
 └── tsconfig.json          # TypeScript configuration
 ```
 
-### Mobile View
 
-_Add mobile screenshot if available_
-
-### Key Sections
-
-_Add additional screenshots showcasing different sections of your portfolio_
 
 ## 🎨 Key Components
 
@@ -183,8 +177,8 @@ _Add additional screenshots showcasing different sections of your portfolio_
 
 To customize the portfolio for your own use:
 
-1. Update personal information in `/src/data/personal.ts`
-2. Replace images in `/public/images/`
+1. Update homepage information in `/src/app/page.tsx`
+2. Replace images in `/public/`
 3. Modify color schemes in `/src/styles/globals.css`
 4. Update project data in `/src/data/projects.ts`
 
