@@ -14,7 +14,7 @@ export default function AboutPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-10 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text Content */}
           <div className="space-y-8">

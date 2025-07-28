@@ -103,7 +103,7 @@ export default function Contact() {
   return (
     <>
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
+      <section className="flex flex-col items-center justify-center min-h-screen py-8 md:py-6 lg:py-12 px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-16 z-10">
           <BlurText
             text="Get In Touch"
