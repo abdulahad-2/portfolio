@@ -1,6 +1,17 @@
 // data/projects.ts
 
-export const projects = [
+interface Project {
+  id: number;
+  number: string;
+  title: string;
+  description: string;
+  techstack: string[];
+  imageSrc: string;
+  link: string;
+  categories?: string[];
+}
+
+export const projects: Project[] = [
   {
     id: 1,
     number: "01",
@@ -16,6 +27,7 @@ export const projects = [
     ],
     imageSrc: "/proj/projectOne.webp",
     link: "https://by39tk-uv.myshopify.com/",
+    categories: ["eCommerce"],
   },
   {
     id: 2,
@@ -29,6 +41,7 @@ export const projects = [
     ],
     imageSrc: "/proj/projectTwo.webp",
     link: "https://www.gdsc-plm.org/",
+    categories: ["Portfolio & Community"],
   },
   {
     id: 3,
@@ -42,6 +55,7 @@ export const projects = [
     ],
     imageSrc: "/proj/projectThree.webp",
     link: "https://plmce-grievdesk.web.app/",
+    categories: ["Web Apps"],
   },
   {
     id: 4,
@@ -57,6 +71,7 @@ export const projects = [
     ],
     imageSrc: "/proj/projectFour.webp",
     link: "https://conso-frontend-v2.onrender.com/",
+    categories: ["Web Apps"],
   },
   {
     id: 5,
@@ -66,6 +81,7 @@ export const projects = [
     techstack: ["/techstack/nextjs.svg", "/techstack/tailwind.svg"],
     imageSrc: "/proj/projectFive.webp",
     link: "https://aceframe.web.app/",
+    categories: ["Web Apps"],
   },
   {
     id: 6,
@@ -81,5 +97,6 @@ export const projects = [
     ],
     imageSrc: "/proj/projectSix.webp",
     link: "https://khanjeecanada.com/",
+    categories: ["eCommerce", "WordPress"],
   },
 ];

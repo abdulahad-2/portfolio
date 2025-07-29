@@ -3,12 +3,77 @@
 import React, { useState, useEffect } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
+import AnimatedCounter from "@/components/AnimatedCounter"; // Import AnimatedCounter
 
 // Additional projects specific to portfolio page
 const portfolioSpecificProjects = [
   {
-    id: 101,
+    id: 106, // Changed from 1 to 106
     number: "07",
+    title: "GDSC PLM",
+    description: "WordPress Developer",
+    techstack: [
+      "/techstack/html.svg",
+      "/techstack/css.svg",
+      "/techstack/js.svg",
+      "/techstack/wordpress.svg",
+      "/techstack/php.svg"
+    ],
+    imageSrc: "/proj/projectTwo.webp", // Corrected from "/proj/gdsc.webp"
+    link: "https://www.gdsc-plm.org/",
+    categories: ["Portfolio & Community"],
+  },
+  {
+    id: 107, // Changed from 2 to 107
+    number: "08", // Corrected from "02"
+    title: "The Ikigai",
+    description: "WordPress Developer",
+    techstack: [
+      "/techstack/html.svg",
+      "/techstack/css.svg",
+      "/techstack/js.svg",
+      "/techstack/wordpress.svg",
+      "/techstack/php.svg"
+    ],
+    imageSrc: "/proj/ikigai.webp",
+    link: "https://theikigai.co/",
+    categories: ["WordPress"],
+  },
+  {
+    id: 108, // Changed from 3 to 108
+    number: "09", // Corrected from "03"
+    title: "Jamachi Plastic Surgery",
+    description: "WordPress Developer",
+    techstack: [
+      "/techstack/html.svg",
+      "/techstack/css.svg",
+      "/techstack/js.svg",
+      "/techstack/wordpress.svg",
+      "/techstack/php.svg"
+    ],
+    imageSrc: "/proj/jamichi.webp",
+    link: "https://jamachi.com.au/",
+    categories: ["WordPress"],
+  },
+  {
+    id: 109, // Changed from 4 to 109
+    number: "10", // Corrected from "04"
+    title: "EMS Innovations",
+    description: "WordPress Developer",
+    techstack: [
+      "/techstack/html.svg",
+      "/techstack/css.svg",
+      "/techstack/js.svg",
+      "/techstack/wordpress.svg",
+      "/techstack/php.svg"
+    ],
+    imageSrc: "/proj/ems.webp",
+    link: "https://emsinnovations.com.au/",
+    categories: ["WordPress"],
+  },
+  {
+    id: 101,
+    number: "11", // Corrected from "07"
     title: "Dark‑Mode React Admin Dashboard",
     description: "Lead Front‑End Developer & DevOps Engineer",
     techstack: [
@@ -18,10 +83,11 @@ const portfolioSpecificProjects = [
     ],
     imageSrc: "/proj/reactdashboard.webp",
     link: "https://abdulahad-2.github.io/admin-dashboard/#/dashboard",
+    categories: ["Portfolio & Community"],
   },
   {
     id: 102,
-    number: "08",
+    number: "12", // Corrected from "08"
     title: "Responsive Personal Branding Website Design & Development",
     description: "Lead Web Designer & Front‑End Developer",
     techstack: [
@@ -33,10 +99,11 @@ const portfolioSpecificProjects = [
     ],
     imageSrc: "/proj/igor.webp",
     link: "https://igorvainshtein.com/",
+    categories: ["WordPress", "Portfolio & Community"],
   },
   {
     id: 103,
-    number: "09",
+    number: "13", // Corrected from "09"
     title: "Responsive B2B Consulting Website Design & Development",
     description: " Lead Web Designer & Front‑End Developer",
     techstack: [
@@ -48,10 +115,11 @@ const portfolioSpecificProjects = [
     ],
     imageSrc: "/proj/priotize.webp",
     link: "https://priorityib.com.au/",
+    categories: ["WordPress"],
   },
   {
     id: 104,
-    number: "10",
+    number: "14", // Corrected from "10"
     title: "Nonprofit Advocacy Website Design & Development",
     description: " Lead Web Designer & WordPress Developer",
     techstack: [
@@ -63,10 +131,11 @@ const portfolioSpecificProjects = [
     ],
     imageSrc: "/proj/australia.webp",
     link: "https://aidn.org.au/",
+    categories: ["WordPress"],
   },
   {
     id: 105,
-    number: "11",
+    number: "15", // Corrected from "11"
     title: "The Mehfil – Modern Catering & Events Website",
     description: "The Mehfil – Modern Catering & Events Website",
     techstack: [
@@ -78,6 +147,7 @@ const portfolioSpecificProjects = [
     ],
     imageSrc: "/proj/mehfil.webp",
     link: "https://themehfil.ca/",
+    categories: ["eCommerce", "WordPress"],
   },
 ];
 
@@ -112,10 +182,10 @@ const skills = [
 ];
 
 const stats = [
-  { number: "50+", label: "Projects Completed" },
-  { number: "3+", label: "Years Experience" },
-  { number: "100%", label: "Client Satisfaction" },
-  { number: "24/7", label: "Support Available" },
+  { value: 50, suffix: "+", label: "Projects Completed", decimal: false },
+  { value: 3, suffix: "+", label: "Years Experience", decimal: false },
+  { value: 100, suffix: "%", label: "Client Satisfaction", decimal: false }, // Assuming 100 is the number
+  { value: 24, suffix: "/7", label: "Support Available", decimal: false }, // Assuming 24 is the number
 ];
 
 // Define the line type
@@ -179,13 +249,16 @@ export default function PortfoliosPage() {
   const allProjects = [...projects, ...portfolioSpecificProjects];
 
   const filters = [
-    "All Projects",
-    "Web Development",
-    "UI/UX Design",
-    "Full-Stack Apps",
-    "WordPress Sites",
-    "React Projects",
+    "All",
+    "eCommerce",
+    "WordPress",
+    "Web Apps",
+    "Portfolio & Community",
   ];
+
+  const filteredProjects = activeFilter === "All"
+    ? allProjects
+    : allProjects.filter(project => project.categories && project.categories.includes(activeFilter));
 
   useEffect(() => {
     setIsVisible(true);
@@ -283,12 +356,12 @@ Best regards,
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-300 mb-2">
-                    {stat.number}
-                  </h3>
-                  <p className="text-gray-400 text-sm sm:text-base">
-                    {stat.label}
-                  </p>
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    label={stat.label}
+                    decimal={stat.decimal}
+                  />
                 </div>
               ))}
             </div>
@@ -336,7 +409,7 @@ Best regards,
           {/* Projects Section */}
           <section className="mb-16">
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-              {allProjects.map((project, idx) => (
+              {filteredProjects.map((project, idx) => (
                 <div
                   key={project.id}
                   className={`transform transition-all duration-500 ${

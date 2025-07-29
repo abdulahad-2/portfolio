@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useInView } from "framer-motion"; // Import useInView
+import { useRef } from "react"; // Import useRef
 
 interface AnimatedCounterProps {
   value: number;
@@ -17,8 +19,12 @@ export default function AnimatedCounter({
   duration = 1500,
 }: AnimatedCounterProps) {
   const [display, setDisplay] = useState(decimal ? 0.0 : 0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true }); // Trigger once when in view
 
   useEffect(() => {
+    if (!isInView) return; // Only run animation if component is in view
+
     const start = performance.now();
     // Start from 30-40 below the target value
     const offset = Math.floor(Math.random() * 11) + 30; // Random between 30-40
@@ -48,10 +54,10 @@ export default function AnimatedCounter({
     };
 
     requestAnimationFrame(step);
-  }, [value, decimal, duration]);
+  }, [value, decimal, duration, isInView]); // Add isInView to dependencies
 
   return (
-    <div className="flex flex-col items-center text-center">
+    <div ref={ref} className="flex flex-col items-center text-center"> {/* Attach ref */}
       <div className="text-4xl font-bold mb-1">
         {display}
         {suffix}

@@ -14,6 +14,7 @@ interface ProjectCardProps {
     techstack: string[]; // should be like ['techstack/react.png']
     imageSrc: string; // e.g. 'projects/pictoncivil.png'
     link: string;
+    categories?: string[]; // Add this line
   };
   index: number;
 }
@@ -64,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(
 
     return (
       <motion.div
-        className="relative flex flex-col justify-between py-6 px-8 md:px-16 m-5 md:m-0 border border-white border-opacity-20 bg-transparent overflow-hidden h-full"
+        className="relative flex flex-col justify-between py-6 px-8 md:px-16 m-5 md:m-0 border border-white border-opacity-20 bg-transparent overflow-hidden h-full group" // Added 'group' class
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -81,7 +82,9 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(
             className={`flex flex-col ${contentAlignmentClasses} ${textOrderClass} z-10 p-6`}
           >
             <h3
-              className="md:text-xl text-lg font-semibold text-white mb-2 cursor-pointer hover:text-blue-400 transition-colors duration-300"
+              className="md:text-xl text-lg font-semibold text-white mb-2 cursor-pointer transition-colors duration-300 
+                         bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent
+                         group-hover:from-blue-400 group-hover:to-purple-300 group-hover:brightness-125"
               onClick={handleLinkClick}
             >
               {project.title}
