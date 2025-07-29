@@ -19,7 +19,7 @@ const entries: AchievementEntryProps[] = [
     title: "Procrash",
     award: "3rd Place",
     description: "Designed for procrastinators ...",
-    imageSrc: "/solutions/procrash.svg",
+    imageSrc: "/solutions/procrash.webp",
     projectLink: "https://procrash-hdps5h.flutterflow.app/",
     trophyType: "third",
     techStackIcons: ["/techstack/flutterflow.svg", "/techstack/gemini.svg"],
@@ -29,7 +29,7 @@ const entries: AchievementEntryProps[] = [
     title: "Talento",
     award: "Special Award",
     description: "Talento is a mobile app ...",
-    imageSrc: "/solutions/talento.svg",
+    imageSrc: "/solutions/talento.webp",
     projectLink: "https://talento-xi.vercel.app/",
     trophyType: "special",
     techStackIcons: ["/techstack/javascript.svg", "/techstack/css.svg"],
@@ -40,7 +40,7 @@ const entries: AchievementEntryProps[] = [
     award: "1st Place",
     description:
       "A revolutionary web application that transforms user experience through innovative design and cutting-edge technology ...",
-    imageSrc: "/solutions/neosolutions.svg",
+    imageSrc: "/solutions/neosolutions.webp",
     projectLink: "https://phoenix-project.vercel.app/",
     trophyType: "first",
     techStackIcons: [
@@ -55,7 +55,7 @@ const entries: AchievementEntryProps[] = [
     award: "Participant",
     description:
       "An environmental monitoring system that helps track and reduce carbon footprint with real-time analytics ...",
-    imageSrc: "/solutions/kachingko.svg",
+    imageSrc: "/solutions/kachingko.webp",
     projectLink: "https://ecotrack-app.vercel.app/",
     trophyType: "participant",
     techStackIcons: ["/techstack/react.svg", "/techstack/nextjs.svg"],
@@ -66,7 +66,7 @@ const entries: AchievementEntryProps[] = [
     award: "Participant",
     description:
       "A peer-to-peer learning platform connecting developers worldwide for knowledge sharing and collaboration ...",
-    imageSrc: "/solutions/ecarga.svg",
+    imageSrc: "/solutions/ecarga.webp",
     projectLink: "https://codementor-platform.vercel.app/",
     trophyType: "participant",
     techStackIcons: [
@@ -84,21 +84,25 @@ export default function AchievementsPage() {
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Animated Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-teal-900/20 animate-pulse"></div>
-        
+
         {/* Moving Gradient Orbs */}
         <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-pink-500/30 to-violet-500/30 rounded-full blur-3xl animate-float"></div>
         <div className="absolute top-60 right-20 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-float-delayed"></div>
         <div className="absolute bottom-40 left-1/4 w-96 h-96 bg-gradient-to-r from-emerald-500/15 to-teal-500/15 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-20 right-1/3 w-72 h-72 bg-gradient-to-r from-orange-500/25 to-red-500/25 rounded-full blur-3xl animate-bounce-slow"></div>
-        
+
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)",
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
-        
+
         {/* Floating Geometric Shapes */}
         <div className="absolute top-1/4 left-1/5 w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rotate-45 animate-spin-slow opacity-60"></div>
         <div className="absolute top-3/4 right-1/4 w-6 h-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse opacity-40"></div>
@@ -132,12 +136,17 @@ export default function AchievementsPage() {
         <div className="flex flex-col w-full max-w-5xl mx-auto p-4 my-20 relative">
           {/* Glass morphism background for content */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-3xl backdrop-blur-sm border border-white/10"></div>
-          
+
           <div className="relative z-10">
             <div className="hidden md:block mb-10">
               <FallingText
                 text="Besides being a developer, I'm someone who deeply values curiosity, continuous growth, and creative collaboration. I enjoy learning new technologies, solving real-world problems through code, and turning complex ideas into functional and elegant solutions. I believe great products are built through empathy, iteration, and teamwork. ..."
-                highlightWords={["developer", "creative", "teamwork", "complex"]}
+                highlightWords={[
+                  "developer",
+                  "creative",
+                  "teamwork",
+                  "complex",
+                ]}
                 trigger="hover"
                 backgroundColor="transparent"
                 wireframes={false}
@@ -149,7 +158,12 @@ export default function AchievementsPage() {
             <div className="md:hidden mb-10">
               <FallingText
                 text="Besides being a developer, I'm someone who deeply values curiosity, continuous growth, and creative collaboration. I enjoy learning new technologies, solving real-world problems through code, and turning complex ideas into functional and elegant solutions. I believe great products are built through empathy, iteration, and teamwork. ..."
-                highlightWords={["developer", "creative", "teamwork", "complex"]}
+                highlightWords={[
+                  "developer",
+                  "creative",
+                  "teamwork",
+                  "complex",
+                ]}
                 trigger="hover"
                 backgroundColor="transparent"
                 wireframes={false}
@@ -187,7 +201,9 @@ export default function AchievementsPage() {
                   <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
                     5
                   </div>
-                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">Total Projects</p>
+                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">
+                    Total Projects
+                  </p>
                 </div>
               </div>
               <div className="text-center group">
@@ -195,7 +211,9 @@ export default function AchievementsPage() {
                   <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">
                     2
                   </div>
-                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">Awards Won</p>
+                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">
+                    Awards Won
+                  </p>
                 </div>
               </div>
               <div className="text-center group">
@@ -203,7 +221,9 @@ export default function AchievementsPage() {
                   <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text">
                     14
                   </div>
-                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">Technologies</p>
+                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">
+                    Technologies
+                  </p>
                 </div>
               </div>
               <div className="text-center group">
@@ -211,7 +231,9 @@ export default function AchievementsPage() {
                   <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text">
                     3
                   </div>
-                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">Competitions</p>
+                  <p className="text-white/80 mt-1 md:mt-2 font-medium text-xs sm:text-sm">
+                    Competitions
+                  </p>
                 </div>
               </div>
             </div>
@@ -226,26 +248,82 @@ export default function AchievementsPage() {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-6">
               {[
-                { name: "React", icon: "⚛️", color: "from-blue-400 to-cyan-400" },
+                {
+                  name: "React",
+                  icon: "⚛️",
+                  color: "from-blue-400 to-cyan-400",
+                },
                 { name: "Next.js", icon: "▲", color: "from-gray-400 to-white" },
-                { name: "TypeScript", icon: "TS", color: "from-blue-500 to-blue-600" },
-                { name: "Flutter", icon: "🐦", color: "from-blue-400 to-blue-600" },
-                { name: "Python", icon: "🐍", color: "from-yellow-400 to-green-500" },
-                { name: "JavaScript", icon: "JS", color: "from-yellow-400 to-yellow-500" },
-                { name: "CSS", icon: "🎨", color: "from-pink-400 to-purple-500" },
-                { name: "WordPress", icon: "📝", color: "from-blue-600 to-blue-700" },
-                { name: "Shopify", icon: "🛒", color: "from-green-500 to-green-600" },
-                { name: "Node.js", icon: "🟢", color: "from-green-400 to-green-500" },
-                { name: "MongoDB", icon: "🍃", color: "from-green-600 to-green-700" },
-                { name: "Firebase", icon: "🔥", color: "from-orange-400 to-red-500" },
-                { name: "Docker", icon: "🐳", color: "from-blue-500 to-blue-600" },
-                { name: "AI/ML", icon: "🤖", color: "from-purple-400 to-pink-500" },
+                {
+                  name: "TypeScript",
+                  icon: "TS",
+                  color: "from-blue-500 to-blue-600",
+                },
+                {
+                  name: "Flutter",
+                  icon: "🐦",
+                  color: "from-blue-400 to-blue-600",
+                },
+                {
+                  name: "Python",
+                  icon: "🐍",
+                  color: "from-yellow-400 to-green-500",
+                },
+                {
+                  name: "JavaScript",
+                  icon: "JS",
+                  color: "from-yellow-400 to-yellow-500",
+                },
+                {
+                  name: "CSS",
+                  icon: "🎨",
+                  color: "from-pink-400 to-purple-500",
+                },
+                {
+                  name: "WordPress",
+                  icon: "📝",
+                  color: "from-blue-600 to-blue-700",
+                },
+                {
+                  name: "Shopify",
+                  icon: "🛒",
+                  color: "from-green-500 to-green-600",
+                },
+                {
+                  name: "Node.js",
+                  icon: "🟢",
+                  color: "from-green-400 to-green-500",
+                },
+                {
+                  name: "MongoDB",
+                  icon: "🍃",
+                  color: "from-green-600 to-green-700",
+                },
+                {
+                  name: "Firebase",
+                  icon: "🔥",
+                  color: "from-orange-400 to-red-500",
+                },
+                {
+                  name: "Docker",
+                  icon: "🐳",
+                  color: "from-blue-500 to-blue-600",
+                },
+                {
+                  name: "AI/ML",
+                  icon: "🤖",
+                  color: "from-purple-400 to-pink-500",
+                },
               ].map((tech, idx) => (
                 <div key={idx} className="group cursor-pointer">
                   <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-xl md:rounded-2xl p-3 sm:p-4 border border-white/10 group-hover:scale-110 group-hover:border-white/30 transition-all duration-300">
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl mb-1 sm:mb-2">{tech.icon}</div>
-                      <div className={`text-xs sm:text-sm font-bold text-transparent bg-gradient-to-r ${tech.color} bg-clip-text`}>
+                      <div className="text-2xl sm:text-3xl mb-1 sm:mb-2">
+                        {tech.icon}
+                      </div>
+                      <div
+                        className={`text-xs sm:text-sm font-bold text-transparent bg-gradient-to-r ${tech.color} bg-clip-text`}
+                      >
                         {tech.name}
                       </div>
                     </div>
@@ -265,25 +343,53 @@ export default function AchievementsPage() {
             <div className="relative">
               {/* Timeline line - Hidden on very small screens, visible from sm up */}
               <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-emerald-500"></div>
-              
+
               <div className="space-y-6 md:space-y-8">
                 {[
-                  { year: "2024", title: "Project Phoenix - 1st Place", description: "Revolutionary web application", color: "from-yellow-400 to-orange-500" },
-                  { year: "2024", title: "Talento - Special Award", description: "Mobile app for talent discovery", color: "from-purple-400 to-pink-500" },
-                  { year: "2023", title: "Procrash - 3rd Place", description: "App designed for procrastinators", color: "from-orange-400 to-red-500" },
-                  { year: "2023", title: "Started Competitive Programming", description: "Began participating in hackathons", color: "from-blue-400 to-cyan-500" },
+                  {
+                    year: "2024",
+                    title: "Project Phoenix - 1st Place",
+                    description: "Revolutionary web application",
+                    color: "from-yellow-400 to-orange-500",
+                  },
+                  {
+                    year: "2024",
+                    title: "Talento - Special Award",
+                    description: "Mobile app for talent discovery",
+                    color: "from-purple-400 to-pink-500",
+                  },
+                  {
+                    year: "2023",
+                    title: "Procrash - 3rd Place",
+                    description: "App designed for procrastinators",
+                    color: "from-orange-400 to-red-500",
+                  },
+                  {
+                    year: "2023",
+                    title: "Started Competitive Programming",
+                    description: "Began participating in hackathons",
+                    color: "from-blue-400 to-cyan-500",
+                  },
                 ].map((item, idx) => (
                   <div key={idx} className="relative flex items-start sm:ml-16">
                     {/* Timeline dot - Hidden on very small screens */}
-                    <div className={`hidden sm:block absolute -left-20 w-4 h-4 rounded-full bg-gradient-to-r ${item.color} border-4 border-gray-900`}></div>
+                    <div
+                      className={`hidden sm:block absolute -left-20 w-4 h-4 rounded-full bg-gradient-to-r ${item.color} border-4 border-gray-900`}
+                    ></div>
                     <div className="bg-gradient-to-r from-white/10 to-white/5 rounded-xl p-4 sm:p-6 border border-white/10 hover:scale-105 transition-transform duration-300 w-full">
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
-                        <h3 className="text-lg sm:text-xl font-bold text-white">{item.title}</h3>
-                        <span className={`text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${item.color} text-black self-start`}>
+                        <h3 className="text-lg sm:text-xl font-bold text-white">
+                          {item.title}
+                        </h3>
+                        <span
+                          className={`text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${item.color} text-black self-start`}
+                        >
                           {item.year}
                         </span>
                       </div>
-                      <p className="text-white/70 text-sm sm:text-base">{item.description}</p>
+                      <p className="text-white/70 text-sm sm:text-base">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -300,18 +406,48 @@ export default function AchievementsPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {[
-                { title: "Best Innovation Award", issuer: "TechHack 2024", icon: "🏆" },
-                { title: "Excellence in UI/UX", issuer: "Design Competition", icon: "🎨" },
-                { title: "Full Stack Developer", issuer: "Certification Board", icon: "💻" },
-                { title: "AI/ML Specialist", issuer: "Tech Institute", icon: "🤖" },
-                { title: "Open Source Contributor", issuer: "GitHub", icon: "⭐" },
-                { title: "Community Leader", issuer: "Developer Community", icon: "👥" },
+                {
+                  title: "Best Innovation Award",
+                  issuer: "TechHack 2024",
+                  icon: "🏆",
+                },
+                {
+                  title: "Excellence in UI/UX",
+                  issuer: "Design Competition",
+                  icon: "🎨",
+                },
+                {
+                  title: "Full Stack Developer",
+                  issuer: "Certification Board",
+                  icon: "💻",
+                },
+                {
+                  title: "AI/ML Specialist",
+                  issuer: "Tech Institute",
+                  icon: "🤖",
+                },
+                {
+                  title: "Open Source Contributor",
+                  issuer: "GitHub",
+                  icon: "⭐",
+                },
+                {
+                  title: "Community Leader",
+                  issuer: "Developer Community",
+                  icon: "👥",
+                },
               ].map((cert, idx) => (
                 <div key={idx} className="group cursor-pointer">
                   <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-xl md:rounded-2xl p-4 sm:p-6 border border-white/10 group-hover:scale-105 group-hover:border-white/30 transition-all duration-300">
-                    <div className="text-3xl sm:text-4xl text-center mb-3 sm:mb-4">{cert.icon}</div>
-                    <h3 className="text-base sm:text-lg font-bold text-white text-center mb-2">{cert.title}</h3>
-                    <p className="text-white/60 text-center text-sm">{cert.issuer}</p>
+                    <div className="text-3xl sm:text-4xl text-center mb-3 sm:mb-4">
+                      {cert.icon}
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-white text-center mb-2">
+                      {cert.title}
+                    </h3>
+                    <p className="text-white/60 text-center text-sm">
+                      {cert.issuer}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -328,7 +464,9 @@ export default function AchievementsPage() {
                 Ready to Build Something Amazing?
               </h2>
               <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
-                These achievements represent just the beginning of my journey. I&apos;m always looking for new challenges and opportunities to create innovative solutions.
+                These achievements represent just the beginning of my journey.
+                I&apos;m always looking for new challenges and opportunities to
+                create innovative solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Link href="/portfolios">
@@ -359,46 +497,70 @@ export default function AchievementsPage() {
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
         }
-        
+
         @keyframes float-delayed {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-30px) rotate(-180deg); }
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-30px) rotate(-180deg);
+          }
         }
-        
+
         @keyframes float-slow {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(90deg); }
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(90deg);
+          }
         }
-        
+
         @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0px) scale(1); }
-          50% { transform: translateY(-10px) scale(1.1); }
+          0%,
+          100% {
+            transform: translateY(0px) scale(1);
+          }
+          50% {
+            transform: translateY(-10px) scale(1.1);
+          }
         }
-        
+
         @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
-        
+
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
-        
+
         .animate-float-delayed {
           animation: float-delayed 8s ease-in-out infinite;
         }
-        
+
         .animate-float-slow {
           animation: float-slow 10s ease-in-out infinite;
         }
-        
+
         .animate-bounce-slow {
           animation: bounce-slow 4s ease-in-out infinite;
         }
-        
+
         .animate-spin-slow {
           animation: spin-slow 20s linear infinite;
         }
