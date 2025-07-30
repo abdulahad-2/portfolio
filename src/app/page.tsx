@@ -245,7 +245,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <TrueFocus
-            sentence="Full Stack Developer   UI/UX Designer   Solopreneur"
+            sentence="Full Stack Developer   UI/UX Designer  Entrepreneur"
             manualMode
             blurAmount={5}
             borderColor="cyan"
