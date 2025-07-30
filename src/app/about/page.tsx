@@ -64,7 +64,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-2xl blur-3xl animate-pulse"></div>
               <div className="relative bg-gradient-to-br from-gray-900 via-purple-900/20 to-black rounded-2xl p-8 border border-purple-400/20 shadow-2xl shadow-purple-500/10">
                 <Image
-                  src="/photos/tiltedcard.svg"
+                  src="/photos/tiltedcard.webp"
                   alt="Profile"
                   width={400}
                   height={400}
