@@ -449,7 +449,7 @@ export default function EnhancedTestimonialSlider() {
   }, []);
 
   return (
-    <section className="py-12 md:py-24 px-4 relative overflow-hidden">
+    <section className="py-12 md:py-24 relative overflow-hidden w-screen ml-[calc(-50vw+50%)]">
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/30 via-transparent to-purple-600/10"></div>
 
@@ -474,7 +474,7 @@ export default function EnhancedTestimonialSlider() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -484,7 +484,7 @@ export default function EnhancedTestimonialSlider() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent mb-4 md:mb-6">
             What Clients Say
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Don&apos;t just take our word for it. Here&apos;s what our clients
             have to say about working with us.
           </p>
@@ -523,7 +523,7 @@ export default function EnhancedTestimonialSlider() {
           </div>
 
           {/* --- TESTIMONIALS GRID --- */}
-          <div className="overflow-hidden mx-4 md:mx-16">
+          <div className="overflow-hidden mx-auto">
             <AnimatePresence mode="wait" initial={false}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {getVisibleTestimonials(currentIndex, testimonials.length).map(

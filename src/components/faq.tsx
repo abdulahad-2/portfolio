@@ -381,9 +381,8 @@ const FAQ = () => {
       ],
     },
   ];
-
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden w-screen ml-[calc(-50vw+50%)]">
       {/* Simplified Background - reduced blur and opacity */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/6 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-2xl opacity-5"></div>
@@ -392,7 +391,7 @@ const FAQ = () => {
         {/* Adjusted opacity and blur */}
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Simplified Header - removed shadow and excessive hover effects */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 rounded-2xl mb-6 relative overflow-hidden">
@@ -404,7 +403,7 @@ const FAQ = () => {
               FAQ
             </span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl md:max-w-3xl mx-auto px-2 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
             Everything you need to know about my full-stack development
             expertise, from frontend to backend, DevOps to deployment.
             <span className="block sm:inline text-transparent bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text sm:ml-1 mt-2 sm:mt-0 font-semibold">
@@ -433,7 +432,7 @@ const FAQ = () => {
               </div>
 
               {/* FAQ Items */}
-              <div className="grid gap-4 sm:gap-5">
+              <div className="grid gap-3 sm:gap-4 md:gap-5">
                 {category.items.map((item, itemIndex) => {
                   const globalIndex = categoryIndex * 100 + itemIndex;
                   const isOpen = openItems.has(globalIndex);
@@ -444,9 +443,9 @@ const FAQ = () => {
                       className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden hover:bg-white/8 transition-colors duration-300 hover:border-purple-500/30"
                     >
                       <button
-                        onClick={() => toggleItem(globalIndex)}
-                        className="w-full px-5 sm:px-6 md:px-7 py-4 sm:py-5 md:py-6 text-left flex items-start sm:items-center justify-between gap-3 sm:gap-4"
-                      >
+  onClick={() => toggleItem(globalIndex)}
+  className="w-full px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-left flex items-start sm:items-center justify-between gap-3 sm:gap-4"
+>
                         <span className="text-sm sm:text-base md:text-lg font-semibold text-white leading-relaxed flex-1 pr-2">
                           {item.question}
                         </span>
@@ -463,24 +462,22 @@ const FAQ = () => {
 
                       {/* Answer Content */}
                       <div
-                        className={`px-5 sm:px-6 md:px-7 transition-all duration-300 ease-in-out ${
+                        className={`transition-all duration-300 ease-in-out ${
                           isOpen
                             ? "max-h-[500px] pb-4 sm:pb-5 md:pb-6 opacity-100"
                             : "max-h-0 pb-0 opacity-0 overflow-hidden"
                         }`}
                       >
                         <div
-                          className={`border-t border-gradient-to-r ${category.gradient} opacity-20 pt-4 sm:pt-5 relative`}
-                        >
-                          <div
-                            className={`absolute top-0 left-0 w-16 h-0.5 bg-gradient-to-r ${category.gradient} opacity-60`}
-                          ></div>
-                          <p className="text-xs sm:text-sm md:text-base text-gray-200 leading-relaxed">
-                            {" "}
-                            {/* Changed from text-gray-300 to text-gray-200 */}
-                            {item.answer}
-                          </p>
-                        </div>
+  className={`border-t border-gradient-to-r ${category.gradient} opacity-20 pt-4 sm:pt-5 px-4 sm:px-6 md:px-8 relative`}
+>
+  <div
+    className={`absolute top-0 left-4 sm:left-6 md:left-8 w-16 h-0.5 bg-gradient-to-r ${category.gradient} opacity-60`}
+  ></div>
+  <p className="text-xs sm:text-sm md:text-base text-white leading-relaxed">
+  {item.answer}
+</p>
+</div>
                       </div>
                     </div>
                   );
@@ -497,7 +494,7 @@ const FAQ = () => {
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text mb-3 sm:mb-4">
               Ready to Start Your Project?
             </h3>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 max-w-lg sm:max-w-xl mx-auto px-2 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 max-w-lg sm:max-w-xl mx-auto leading-relaxed">
               Let&apos;s discuss your full-stack development needs and bring
               your vision to life with cutting-edge technology and best
               practices.
