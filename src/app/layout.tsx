@@ -8,9 +8,9 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 import { gilroy } from "@/fonts/fonts"; // Assuming this path is correct
 import Footer from "@/components/Footer"; // Assuming this path is correct
-
 // Memoize static data to prevent re-creation on every render
 const items = [
   { label: "Home", href: "/" },
