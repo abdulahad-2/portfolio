@@ -1,5 +1,7 @@
 "use client";
 
+import Script from "next/script";
+
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -127,7 +129,23 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      {/* Head content moved to app/head.tsx for proper SSR and Plausible verification */}
+      <head>
+        {/* Plausible Analytics */}
+        <Script
+          defer
+          data-domain="portfolio-prei.vercel.app"
+          src="https://plausible.io/js/script.file-downloads.outbound-links.pageview-props.tagged-events.js"
+          strategy="afterInteractive"
+        />
+        <Script id="plausible-init" strategy="afterInteractive">
+          {`
+            window.plausible = window.plausible || function() {
+              (window.plausible.q = window.plausible.q || []).push(arguments)
+            }
+          `}
+        </Script>
+      </head>
+
       {/*
         FIXED: Added suppressHydrationWarning to the body tag.
         This tells React to suppress the hydration warning for differences
