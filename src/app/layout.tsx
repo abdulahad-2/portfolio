@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useCallback, useMemo } from "react";
+import Head from "next/head";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import GooeyNav from "@/blocks/Components/GooeyNav/GooeyNav";
@@ -127,6 +128,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Head>
+        <script
+          defer
+          data-domain="portfolio-prei.vercel.app"
+          src="https://plausible.io/js/script.js"
+        ></script>
+      </Head>
       {/*
         FIXED: Added suppressHydrationWarning to the body tag.
         This tells React to suppress the hydration warning for differences
