@@ -130,6 +130,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <title>Abdul Ahad - Full Stack Developer & UI/UX Designer</title>
+        <meta name="description" content="Abdul Ahad's portfolio: A Full Stack Developer and UI/UX Designer crafting seamless digital experiences with Next.js, React, Tailwind CSS, and more. Explore projects, experience, and services."/>
         {/* Plausible Analytics */}
         <Script
           defer
