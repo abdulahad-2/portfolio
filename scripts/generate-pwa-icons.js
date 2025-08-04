@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-const inputSvgPath = path.resolve(__dirname, '../public/logo/logofixxed.svg');
+const inputImagePath = path.resolve(__dirname, '../public/icons/logo.png');
 const outputIconsDir = path.resolve(__dirname, '../public/icons');
 
 const iconsToGenerate = [
@@ -19,7 +19,7 @@ async function generateIcons() {
   for (const icon of iconsToGenerate) {
     const outputPath = path.join(outputIconsDir, icon.name);
     try {
-      await sharp(inputSvgPath)
+      await sharp(inputImagePath)
         .resize(icon.size, icon.size)
         .toFile(outputPath);
       console.log(`Generated ${outputPath}`);
