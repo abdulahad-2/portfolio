@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "My Portfolio",
-  "short_name": "Portfolio",
+  "name": "Ahad-dev",
+  "short_name": "Ahad",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
