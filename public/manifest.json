@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Ahad-dev",
-  "short_name": "Ahad",
+  "name": "AbdulAhad-dev",
+  "short_name": "Ahad-dev",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
