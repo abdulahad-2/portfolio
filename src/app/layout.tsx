@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { gilroy } from "@/fonts/fonts"; // Assuming this path is correct
 import Footer from "@/components/Footer"; // Assuming this path is correct
@@ -522,7 +521,7 @@ export default function RootLayout({
         </div>
         <Footer />
         <Analytics />
-        <SpeedInsights />
+        
       </body>
     </html>
   );
