@@ -6,7 +6,7 @@ A modern, responsive portfolio website built with cutting-edge web technologies 
 
 ## 🚀 Live Demo
 
-[View Live Website](https://portfolio-prei.vercel.app/)
+[View Live Website](https://ahad-dev.vercel.app/))
 
 ## 📋 Table of Contents
 
@@ -211,7 +211,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Abdul Ahad**
 
 - GitHub: [@abdulahad-2](https://github.com/abdulahad-2)
-- Portfolio: https://portfolio-prei.vercel.app/
+- Portfolio: (https://ahad-dev.vercel.app/)
 - Email: ahadking6152@example.com
 - LinkedIn: https://www.linkedin.com/in/abdul-ahad-7908a82b4/
 
