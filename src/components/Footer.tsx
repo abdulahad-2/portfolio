@@ -288,7 +288,7 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-400">
               <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-center transition-transform duration-300 hover:scale-105">
-                © {currentYear} Sage Devs. All rights reserved.
+                © {currentYear} Abdul Ahad. All rights reserved.
               </span>
             </div>
             <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 lg:space-x-8 text-xs sm:text-sm">
