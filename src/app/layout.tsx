@@ -166,6 +166,7 @@ export default function RootLayout({
         />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="preconnect" href="https://plausible.io" />
         <title>Abdul Ahad - Full Stack Developer & UI/UX Designer</title>
         <meta
           name="description"

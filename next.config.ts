@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
+  compiler: {
+    // Enables the styled-components SWC transform
+    // We are targeting ES2020 to avoid transpiling modern JavaScript features unnecessarily.
+    ecma: 2020,
+  },
 };
 
 export default withPWA({

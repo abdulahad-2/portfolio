@@ -391,9 +391,9 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
           />
         </div>
         <div className="min-w-0">
-          <h4 className="font-bold text-white text-sm md:text-base truncate">
+          <span className="font-bold text-white text-sm md:text-base truncate">
             {testimonial.author}
-          </h4>
+          </span>
           <p className="text-purple-300 text-xs md:text-sm truncate">
             {testimonial.role}
           </p>
