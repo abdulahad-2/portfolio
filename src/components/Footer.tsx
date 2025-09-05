@@ -145,7 +145,7 @@ const Footer = () => {
               </Link>
 
               <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent mb-3 lg:mb-4">
-                Sage Devs
+                Abdul Ahad
               </h2>
 
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 lg:mb-8 max-w-md mx-auto lg:mx-0">

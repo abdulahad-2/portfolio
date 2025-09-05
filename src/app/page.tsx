@@ -229,7 +229,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <BlurText
-            text="Sage Devs"
+            text="Abdul Ahad"
             delay={150}
             animateBy="letters"
             direction="top"
